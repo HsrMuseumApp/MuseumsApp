@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		004176E51A1FAA27000838AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004176E41A1FAA27000838AC /* AppDelegate.swift */; };
-		004176E71A1FAA27000838AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004176E61A1FAA27000838AC /* ViewController.swift */; };
+		004176E71A1FAA27000838AC /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004176E61A1FAA27000838AC /* TasksViewController.swift */; };
 		004176EA1A1FAA27000838AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 004176E81A1FAA27000838AC /* Main.storyboard */; };
 		004176EC1A1FAA27000838AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 004176EB1A1FAA27000838AC /* Images.xcassets */; };
 		004176EF1A1FAA27000838AC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004176ED1A1FAA27000838AC /* LaunchScreen.xib */; };
 		004176FB1A1FAA27000838AC /* MuseumAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004176FA1A1FAA27000838AC /* MuseumAppTests.swift */; };
+		004177071A1FAF7E000838AC /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004177061A1FAF7E000838AC /* Beacon.swift */; };
+		0041770A1A1FAFC7000838AC /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004177091A1FAFC7000838AC /* Task.swift */; };
+		0041770C1A1FB3EA000838AC /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0041770B1A1FB3EA000838AC /* TableViewCell.swift */; };
+		0041770E1A1FC89B000838AC /* StrikeThroughText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0041770D1A1FC89B000838AC /* StrikeThroughText.swift */; };
+		004177101A1FDC21000838AC /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0041770F1A1FDC21000838AC /* TaskDetailViewController.swift */; };
+		004177121A1FE062000838AC /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004177111A1FE062000838AC /* Question.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +35,19 @@
 		004176DF1A1FAA27000838AC /* MuseumApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuseumApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		004176E31A1FAA27000838AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		004176E41A1FAA27000838AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		004176E61A1FAA27000838AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		004176E61A1FAA27000838AC /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		004176E91A1FAA27000838AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		004176EB1A1FAA27000838AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		004176EE1A1FAA27000838AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		004176F41A1FAA27000838AC /* MuseumAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MuseumAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		004176F91A1FAA27000838AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		004176FA1A1FAA27000838AC /* MuseumAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumAppTests.swift; sourceTree = "<group>"; };
+		004177061A1FAF7E000838AC /* Beacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
+		004177091A1FAFC7000838AC /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		0041770B1A1FB3EA000838AC /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		0041770D1A1FC89B000838AC /* StrikeThroughText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrikeThroughText.swift; sourceTree = "<group>"; };
+		0041770F1A1FDC21000838AC /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
+		004177111A1FE062000838AC /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +89,12 @@
 		004176E11A1FAA27000838AC /* MuseumApp */ = {
 			isa = PBXGroup;
 			children = (
+				004177081A1FAF85000838AC /* Model */,
 				004176E41A1FAA27000838AC /* AppDelegate.swift */,
-				004176E61A1FAA27000838AC /* ViewController.swift */,
+				004176E61A1FAA27000838AC /* TasksViewController.swift */,
+				0041770F1A1FDC21000838AC /* TaskDetailViewController.swift */,
+				0041770B1A1FB3EA000838AC /* TableViewCell.swift */,
+				0041770D1A1FC89B000838AC /* StrikeThroughText.swift */,
 				004176E81A1FAA27000838AC /* Main.storyboard */,
 				004176EB1A1FAA27000838AC /* Images.xcassets */,
 				004176ED1A1FAA27000838AC /* LaunchScreen.xib */,
@@ -110,6 +126,16 @@
 				004176F91A1FAA27000838AC /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		004177081A1FAF85000838AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				004177061A1FAF7E000838AC /* Beacon.swift */,
+				004177091A1FAFC7000838AC /* Task.swift */,
+				004177111A1FE062000838AC /* Question.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,8 +238,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				004176E71A1FAA27000838AC /* ViewController.swift in Sources */,
+				004177101A1FDC21000838AC /* TaskDetailViewController.swift in Sources */,
+				004177121A1FE062000838AC /* Question.swift in Sources */,
+				0041770C1A1FB3EA000838AC /* TableViewCell.swift in Sources */,
+				0041770A1A1FAFC7000838AC /* Task.swift in Sources */,
+				0041770E1A1FC89B000838AC /* StrikeThroughText.swift in Sources */,
+				004176E71A1FAA27000838AC /* TasksViewController.swift in Sources */,
 				004176E51A1FAA27000838AC /* AppDelegate.swift in Sources */,
+				004177071A1FAF7E000838AC /* Beacon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
