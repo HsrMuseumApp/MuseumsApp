@@ -3,7 +3,19 @@ import UIKit
 class Task: NSObject {
     
     var text: String
-    var completed: Bool
+    var completed: Bool {
+        didSet {
+            var defaults = NSUserDefaults.standardUserDefaults()
+            var answeredQuestions: [Int] = defaults.objectForKey("answeredQuestions") as [Int]
+            for actualId in answeredQuestions {
+                if(actualId == self.id) {
+                    return
+                }
+            }
+            answeredQuestions.append(self.id)
+            defaults.setObject(answeredQuestions, forKey: "answeredQuestions")
+        }
+    }
     var id: Int
     var beacon: Beacon
     var answers: [Answer]

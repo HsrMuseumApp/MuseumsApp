@@ -3,8 +3,6 @@ import UIKit
 import QuartzCore
 
 protocol TableViewCellDelegate {
-    func taskDeleted(task: Task)
-    func taskCompleted(task: Task)
     func taskAnswerQuestions(task: Task)
 }
 
