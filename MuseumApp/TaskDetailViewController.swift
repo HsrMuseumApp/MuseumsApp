@@ -11,6 +11,8 @@ class TaskDetailViewController: UIViewController {
     @IBOutlet weak var txtAnswerTwo: UILabel!
     @IBOutlet weak var txtAnswerThree: UILabel!
     
+    @IBOutlet weak var errorMessage: UILabel!
+    
     @IBOutlet weak var btnAnswerOne: UIButton!
     @IBOutlet weak var btnAnswerTwo: UIButton!
     @IBOutlet weak var btnAnswerThree: UIButton!
@@ -27,51 +29,48 @@ class TaskDetailViewController: UIViewController {
         txtAnswerThree.text = task!.answers[2].text
         
         btnSendAnswer.enabled = false
-        
+        errorMessage.text = ""   
     }
 
+
     @IBAction func answerOnePressed(sender: AnyObject) {
+        resetButton()
         btnAnswerOne.backgroundColor = UIColor.greenColor()
-        btnAnswerTwo.backgroundColor = UIColor.lightGrayColor()
-        btnAnswerThree.backgroundColor = UIColor.lightGrayColor()
-        
         self.selectedAnswer = 0
-        btnSendAnswer.enabled = true
-        btnSendAnswer.backgroundColor = UIColor.greenColor()
     }
     
     @IBAction func answerTwoPressed(sender: AnyObject) {
-        btnAnswerOne.backgroundColor = UIColor.lightGrayColor()
+        resetButton()
         btnAnswerTwo.backgroundColor = UIColor.greenColor()
-        btnAnswerThree.backgroundColor = UIColor.lightGrayColor()
-        
         self.selectedAnswer = 1
-        btnSendAnswer.enabled = true
-        btnSendAnswer.backgroundColor = UIColor.greenColor()
     }
     
     @IBAction func answerThreePressed(sender: AnyObject) {
+        resetButton()
+        btnAnswerThree.backgroundColor = UIColor.greenColor()
+        self.selectedAnswer = 2
+    }
+    
+    func resetButton() {
         btnAnswerOne.backgroundColor = UIColor.lightGrayColor()
         btnAnswerTwo.backgroundColor = UIColor.lightGrayColor()
-        btnAnswerThree.backgroundColor = UIColor.greenColor()
+        btnAnswerThree.backgroundColor = UIColor.lightGrayColor()
         
-        self.selectedAnswer = 2
         btnSendAnswer.enabled = true
         btnSendAnswer.backgroundColor = UIColor.greenColor()
+        errorMessage.text = ""
     }
     
     @IBAction func closeView(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
     
     @IBAction func sendAnswer(sender: AnyObject) {
         if(task!.answers[self.selectedAnswer!].correct) {
-            
+            task?.completed = true
+            self.dismissViewControllerAnimated(true, completion: nil)
         } else {
-            
+            errorMessage.text = "Falsche Antwort. Probiere es nochmals!"
         }
-        
     }
-    
-    
 }

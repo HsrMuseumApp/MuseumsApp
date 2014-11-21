@@ -36,13 +36,13 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         )
         tasks.append(
             Task(
-                text: "Dies ist die Frage 3",
+                text: "Welches ist Robins Lieblingsfarbe",
                 id: 3,
                 beacon: Beacon(uuid: "abc", minor: "ab", major: "ab"),
                 answers: [
-                    Answer(text: "Frage 1", correct: true),
-                    Answer(text: "Frage 2", correct: false),
-                    Answer(text: "Frage 3", correct: false)
+                    Answer(text: "Blau", correct: true),
+                    Answer(text: "Rot", correct: false),
+                    Answer(text: "Grün", correct: false)
                 ]
             )
         )
@@ -61,6 +61,11 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.separatorStyle = .None
         tableView.rowHeight = 50.0
         tableView.backgroundColor = UIColor.blackColor()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     

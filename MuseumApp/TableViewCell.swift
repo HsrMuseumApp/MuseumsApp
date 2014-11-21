@@ -128,17 +128,14 @@ class TableViewCell: UITableViewCell {
                 width: bounds.size.width, height: bounds.size.height)
             if completeOnDragRelease {
                 if task != nil {
-                    task!.completed = true
-
                     if(task!.answers.count > 0) {
-                        println("Mehrere Fragen")
-                        delegate!.taskAnswerQuestions(task!)
-                        // Open new Subview with Questions
-                        
+                        if(!task!.completed) {
+                            delegate!.taskAnswerQuestions(task!)
+                        }
                     } else {
-                        println("Kann sofort erledigt werden")
                         label.strikeThrough = true
                         taskCompleteLayer.hidden = false
+                        task!.completed = true
                     }
                     UIView.animateWithDuration(0.2, animations: {self.frame = originalFrame})
                     

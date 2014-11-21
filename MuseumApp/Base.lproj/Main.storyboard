@@ -158,6 +158,12 @@
                                     <action selector="sendAnswer:" destination="DZQ-BY-cAc" eventType="touchUpInside" id="Zb8-j8-vOT"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihu-I6-slN">
+                                <rect key="frame" x="16" y="472" width="568" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -168,10 +174,13 @@
                             <constraint firstItem="7px-zd-B4J" firstAttribute="top" secondItem="kz8-C1-nED" secondAttribute="bottom" constant="32" id="8vF-nM-Pat"/>
                             <constraint firstItem="jMb-BD-c2O" firstAttribute="top" secondItem="880-wT-TmT" secondAttribute="bottom" constant="8" id="FFR-o7-NMs"/>
                             <constraint firstItem="880-wT-TmT" firstAttribute="top" secondItem="oo3-vb-61r" secondAttribute="bottom" constant="8" id="J4g-QP-Rei"/>
+                            <constraint firstItem="Ihu-I6-slN" firstAttribute="leading" secondItem="45A-dU-nyU" secondAttribute="leadingMargin" id="JkU-qf-40o"/>
                             <constraint firstItem="7px-zd-B4J" firstAttribute="trailing" secondItem="45A-dU-nyU" secondAttribute="trailingMargin" id="Klh-9v-Zg4"/>
                             <constraint firstItem="kz8-C1-nED" firstAttribute="leading" secondItem="880-wT-TmT" secondAttribute="trailing" constant="12" id="L8I-3F-dO1"/>
+                            <constraint firstItem="Qv9-kv-57a" firstAttribute="top" secondItem="Ihu-I6-slN" secondAttribute="bottom" constant="8" id="MKo-U0-xNH"/>
                             <constraint firstItem="FPM-LD-2tn" firstAttribute="top" secondItem="qlk-VX-BkL" secondAttribute="bottom" constant="8" id="NL2-3g-wq0"/>
                             <constraint firstItem="Qv9-kv-57a" firstAttribute="leading" secondItem="45A-dU-nyU" secondAttribute="leadingMargin" id="O1N-PR-F1R"/>
+                            <constraint firstItem="Ihu-I6-slN" firstAttribute="trailing" secondItem="45A-dU-nyU" secondAttribute="trailingMargin" id="SUR-1V-ASW"/>
                             <constraint firstItem="kz8-C1-nED" firstAttribute="top" secondItem="r83-PP-lr6" secondAttribute="bottom" constant="32" id="UEt-1g-CGp"/>
                             <constraint firstItem="sQz-0U-B2r" firstAttribute="top" secondItem="Qv9-kv-57a" secondAttribute="bottom" constant="20" id="WNU-Y4-b4h"/>
                             <constraint firstItem="IUf-5N-5q4" firstAttribute="trailing" secondItem="45A-dU-nyU" secondAttribute="trailingMargin" id="Xvx-JB-Zmq"/>
@@ -194,6 +203,7 @@
                         <outlet property="btnAnswerThree" destination="jMb-BD-c2O" id="vgU-m7-lLj"/>
                         <outlet property="btnAnswerTwo" destination="880-wT-TmT" id="lPF-hE-HBJ"/>
                         <outlet property="btnSendAnswer" destination="Qv9-kv-57a" id="VfA-gY-GFO"/>
+                        <outlet property="errorMessage" destination="Ihu-I6-slN" id="Eft-Ex-FvM"/>
                         <outlet property="txtAnswerOne" destination="r83-PP-lr6" id="YbQ-g5-LbO"/>
                         <outlet property="txtAnswerThree" destination="7px-zd-B4J" id="JUy-Vu-Rxe"/>
                         <outlet property="txtAnswerTwo" destination="kz8-C1-nED" id="Yx9-5I-577"/>
