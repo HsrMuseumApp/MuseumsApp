@@ -6,13 +6,18 @@ class Task: NSObject {
     var completed: Bool {
         didSet {
             var defaults = NSUserDefaults.standardUserDefaults()
-            var answeredQuestions: [Int] = defaults.objectForKey("answeredQuestions") as [Int]
-            for actualId in answeredQuestions {
-                if(actualId == self.id) {
-                    return
+            var answeredQuestions: [Int]? = defaults.objectForKey("answeredQuestions") as [Int]?
+            if(answeredQuestions != nil) {
+                for actualId in answeredQuestions! {
+                    if(actualId == self.id) {
+                        return
+                    }
                 }
+                answeredQuestions!.append(self.id)
+            } else {
+                answeredQuestions = [self.id]
             }
-            answeredQuestions.append(self.id)
+
             defaults.setObject(answeredQuestions, forKey: "answeredQuestions")
         }
     }

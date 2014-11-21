@@ -116,16 +116,18 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func checkIfQuestionsAnswered() {
         var defaults = NSUserDefaults.standardUserDefaults()
-        var answeredQuestions: [Int] = defaults.objectForKey("answeredQuestions") as [Int]
-        
-        for task in tasks {
-            for actualId in answeredQuestions {
-                if(actualId == task.id) {
-                    task.completed = true
+        var answeredQuestions: [Int]? = defaults.objectForKey("answeredQuestions") as [Int]?
+        if(answeredQuestions != nil) {
+            for task in tasks {
+                for actualId in answeredQuestions! {
+                    if(actualId == task.id) {
+                        task.completed = true
+                    }
                 }
             }
         }
-        println(answeredQuestions)
+        
+        
     }
 
 }
