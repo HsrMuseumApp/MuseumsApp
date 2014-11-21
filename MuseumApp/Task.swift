@@ -6,14 +6,14 @@ class Task: NSObject {
     var completed: Bool
     var id: Int
     var beacon: Beacon
-    var questions: [Question]
+    var answers: [Answer]
     
-    init(text: String, id: Int, beacon: Beacon, questions: [Question]) {
+    init(text: String, id: Int, beacon: Beacon, answers: [Answer]) {
         self.text = text
         self.completed = false
         self.id = id
         self.beacon = beacon
-        self.questions = questions
+        self.answers = answers
     }
    
 }

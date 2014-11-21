@@ -18,7 +18,7 @@
 		0041770C1A1FB3EA000838AC /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0041770B1A1FB3EA000838AC /* TableViewCell.swift */; };
 		0041770E1A1FC89B000838AC /* StrikeThroughText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0041770D1A1FC89B000838AC /* StrikeThroughText.swift */; };
 		004177101A1FDC21000838AC /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0041770F1A1FDC21000838AC /* TaskDetailViewController.swift */; };
-		004177121A1FE062000838AC /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004177111A1FE062000838AC /* Question.swift */; };
+		004177121A1FE062000838AC /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004177111A1FE062000838AC /* Answer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,7 @@
 		0041770B1A1FB3EA000838AC /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		0041770D1A1FC89B000838AC /* StrikeThroughText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrikeThroughText.swift; sourceTree = "<group>"; };
 		0041770F1A1FDC21000838AC /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
-		004177111A1FE062000838AC /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		004177111A1FE062000838AC /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +133,7 @@
 			children = (
 				004177061A1FAF7E000838AC /* Beacon.swift */,
 				004177091A1FAFC7000838AC /* Task.swift */,
-				004177111A1FE062000838AC /* Question.swift */,
+				004177111A1FE062000838AC /* Answer.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -239,7 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				004177101A1FDC21000838AC /* TaskDetailViewController.swift in Sources */,
-				004177121A1FE062000838AC /* Question.swift in Sources */,
+				004177121A1FE062000838AC /* Answer.swift in Sources */,
 				0041770C1A1FB3EA000838AC /* TableViewCell.swift in Sources */,
 				0041770A1A1FAFC7000838AC /* Task.swift in Sources */,
 				0041770E1A1FC89B000838AC /* StrikeThroughText.swift in Sources */,

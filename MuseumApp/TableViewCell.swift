@@ -22,7 +22,7 @@ class TableViewCell: UITableViewCell {
             label.text = task!.text
             label.strikeThrough = task!.completed
             taskCompleteLayer.hidden = !label.strikeThrough
-            if(task?.questions.count > 0) {
+            if(task?.answers.count > 0) {
                 addSubview(questionLabel)
             } else {
                 addSubview(tickLabel)
@@ -130,7 +130,7 @@ class TableViewCell: UITableViewCell {
                 if task != nil {
                     task!.completed = true
 
-                    if(task!.questions.count > 0) {
+                    if(task!.answers.count > 0) {
                         println("Mehrere Fragen")
                         delegate!.taskAnswerQuestions(task!)
                         // Open new Subview with Questions

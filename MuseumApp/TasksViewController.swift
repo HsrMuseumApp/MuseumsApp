@@ -19,10 +19,10 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
                 text: "Dies ist die Frage 1",
                 id: 1,
                 beacon: Beacon(uuid: "abc", minor: "ab", major: "ab"),
-                questions: [
-                    Question(text: "Frage 1", correct: true),
-                    Question(text: "Frage 2", correct: false),
-                    Question(text: "Frage 3", correct: false)
+                answers: [
+                    Answer(text: "Frage 1", correct: true),
+                    Answer(text: "Frage 2", correct: false),
+                    Answer(text: "Frage 3", correct: false)
                 ]
             )
         )
@@ -31,7 +31,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
                 text: "Dies ist die Frage 2",
                 id: 2,
                 beacon: Beacon(uuid: "abc", minor: "ab", major: "ab"),
-                questions: []
+                answers: []
             )
         )
         tasks.append(
@@ -39,10 +39,10 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
                 text: "Dies ist die Frage 3",
                 id: 3,
                 beacon: Beacon(uuid: "abc", minor: "ab", major: "ab"),
-                questions: [
-                    Question(text: "Frage 1", correct: true),
-                    Question(text: "Frage 2", correct: false),
-                    Question(text: "Frage 3", correct: false)
+                answers: [
+                    Answer(text: "Frage 1", correct: true),
+                    Answer(text: "Frage 2", correct: false),
+                    Answer(text: "Frage 3", correct: false)
                 ]
             )
         )
@@ -51,7 +51,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
                 text: "Dies ist die Frage 4",
                 id: 4,
                 beacon: Beacon(uuid: "abc", minor: "ab", major: "ab"),
-                questions: []
+                answers: []
             )
         )
         

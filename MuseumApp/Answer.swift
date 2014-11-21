@@ -1,6 +1,6 @@
 import UIKit
 
-class Question: NSObject {
+class Answer: NSObject {
     var text: String
     var correct: Bool
     
