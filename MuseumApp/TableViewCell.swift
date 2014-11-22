@@ -25,6 +25,8 @@ class TableViewCell: UITableViewCell {
                     taskCompleteLayer.hidden = false
             } else if(task!.isSelectable){
                 taskSelectableLayer.hidden = false
+            } else if(!task!.isSelectable){
+                taskSelectableLayer.hidden = true
             }
         
             if(task?.answers.count > 0) {
