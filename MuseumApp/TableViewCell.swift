@@ -14,12 +14,19 @@ class TableViewCell: UITableViewCell {
     var completeOnDragRelease = false
     let label: StrikeThroughText
     let taskCompleteLayer = CALayer()
+    let taskSelectableLayer = CALayer()
     var delegate: TableViewCellDelegate?
     var task: Task? {
         didSet {
             label.text = task!.text
             label.strikeThrough = task!.completed
-            taskCompleteLayer.hidden = !label.strikeThrough
+            if(task!.completed) {
+                    label.strikeThrough = true
+                    taskCompleteLayer.hidden = false
+            } else if(task!.isSelectable){
+                taskSelectableLayer.hidden = false
+            }
+        
             if(task?.answers.count > 0) {
                 addSubview(questionLabel)
             } else {
@@ -75,12 +82,16 @@ class TableViewCell: UITableViewCell {
         gradientLayer.locations = [0.0, 0.01, 0.95, 1.0]
         layer.insertSublayer(gradientLayer, atIndex: 0)
         
-        
-        
         taskCompleteLayer = CALayer(layer: layer)
         taskCompleteLayer.backgroundColor = UIColor(red: 0.0, green: 0.6, blue: 0.0, alpha: 1.0).CGColor
         taskCompleteLayer.hidden = true
+        
+        taskSelectableLayer = CALayer(layer: layer)
+        taskSelectableLayer.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.6, alpha: 1.0).CGColor
+        taskSelectableLayer.hidden = true
+        
         layer.insertSublayer(taskCompleteLayer, atIndex: 0)
+        layer.insertSublayer(taskSelectableLayer, atIndex: 0)
         
         var recognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
         recognizer.delegate = self
@@ -94,6 +105,8 @@ class TableViewCell: UITableViewCell {
         super.layoutSubviews()
         gradientLayer.frame = bounds
         taskCompleteLayer.frame = bounds
+        taskSelectableLayer.frame = bounds
+        
         label.frame = CGRect(x: kLabelLeftMargin, y: 0, width: bounds.size.width - kLabelLeftMargin, height: bounds.size.height)
         
         tickLabel.frame = CGRect(x: -kUICuesWidth - kUICuesMargin, y: 0, width: kUICuesWidth, height: bounds.size.height)
@@ -126,18 +139,18 @@ class TableViewCell: UITableViewCell {
                 width: bounds.size.width, height: bounds.size.height)
             if completeOnDragRelease {
                 if task != nil {
-                    if(task!.answers.count > 0) {
-                        if(!task!.completed) {
-                            delegate!.taskAnswerQuestions(task!)
+                    if(task!.isSelectable) {
+                        if(task!.answers.count > 0) {
+                            if(!task!.completed) {
+                                delegate!.taskAnswerQuestions(task!)
+                            }
+                        } else {
+                            label.strikeThrough = true
+                            taskCompleteLayer.hidden = false
+                            task!.completed = true
                         }
-                    } else {
-                        label.strikeThrough = true
-                        taskCompleteLayer.hidden = false
-                        task!.completed = true
                     }
                     UIView.animateWithDuration(0.2, animations: {self.frame = originalFrame})
-                    
-                
                 }
             } else {
                 UIView.animateWithDuration(0.2, animations: {self.frame = originalFrame})

@@ -24,6 +24,7 @@ class Task: NSObject {
     var id: Int
     var beacon: Beacon
     var answers: [Answer]
+    var isSelectable: Bool
     
     init(text: String, id: Int, beacon: Beacon, answers: [Answer]) {
         self.text = text
@@ -31,6 +32,7 @@ class Task: NSObject {
         self.id = id
         self.beacon = beacon
         self.answers = answers
+        self.isSelectable = false
     }
    
 }

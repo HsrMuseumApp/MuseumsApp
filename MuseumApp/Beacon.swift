@@ -1,12 +1,10 @@
 import UIKit
 
 class Beacon: NSObject {
-    var uuid: String
-    var minor: String
-    var major: String
+    var minor: NSNumber
+    var major: NSNumber
     
-    init(uuid: String, minor: String, major: String) {
-        self.uuid = uuid
+    init(minor: NSNumber, major: NSNumber) {
         self.minor = minor
         self.major = major
     }

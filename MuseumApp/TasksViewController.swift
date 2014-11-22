@@ -4,6 +4,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     @IBOutlet weak var tableView: UITableView!
     
+    
     var tasks = [Task]()
 
     override func viewDidLoad() {
@@ -29,6 +30,8 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
+    
+    
     
     
     // MARK: - Table view data source
@@ -61,9 +64,8 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // Mark: - Table view delegate
     func colorForIndex(index: Int) -> UIColor {
-        let taskCount = tasks.count - 1
-        let val = (CGFloat(index) / CGFloat(taskCount)) * 0.6 + 0.3
-        return UIColor(red: 0.4, green: val, blue: 1.0, alpha: 1.0)
+        return UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
+        
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell,
@@ -74,13 +76,13 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     func setupData() {
         tasks.append(
             Task(
-                text: "Dies ist die Frage 1",
+                text: "Ist Robin der beste Programmierer?",
                 id: 1,
-                beacon: Beacon(uuid: "abc", minor: "ab", major: "ab"),
+                beacon: Beacon(minor: 18479, major: 56048),
                 answers: [
-                    Answer(text: "Frage 1", correct: true),
-                    Answer(text: "Frage 2", correct: false),
-                    Answer(text: "Frage 3", correct: false)
+                    Answer(text: "Ja", correct: true),
+                    Answer(text: "Nein", correct: false),
+                    Answer(text: "Nein", correct: false)
                 ]
             )
         )
@@ -88,7 +90,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             Task(
                 text: "Dies ist die Frage 2",
                 id: 2,
-                beacon: Beacon(uuid: "abc", minor: "ab", major: "ab"),
+                beacon: Beacon(minor: 1, major: 2),
                 answers: []
             )
         )
@@ -96,7 +98,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             Task(
                 text: "Welches ist Robins Lieblingsfarbe",
                 id: 3,
-                beacon: Beacon(uuid: "abc", minor: "ab", major: "ab"),
+                beacon: Beacon(minor: 1, major: 2),
                 answers: [
                     Answer(text: "Blau", correct: true),
                     Answer(text: "Rot", correct: false),
@@ -108,7 +110,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             Task(
                 text: "Dies ist die Frage 4",
                 id: 4,
-                beacon: Beacon(uuid: "abc", minor: "ab", major: "ab"),
+                beacon: Beacon(minor: 1, major: 2),
                 answers: []
             )
         )
@@ -126,8 +128,16 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
                 }
             }
         }
-        
-        
+    }
+    
+    @IBAction func resetUserDefaults(sender: AnyObject) {
+        println("reset ausgeführt")
+        for task in self.tasks {
+            task.completed = false
+        }
+        tableView.reloadData()
+        var defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject([], forKey: "answeredQuestions")
     }
 
 }

@@ -19,6 +19,7 @@
 		0041770E1A1FC89B000838AC /* StrikeThroughText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0041770D1A1FC89B000838AC /* StrikeThroughText.swift */; };
 		004177101A1FDC21000838AC /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0041770F1A1FDC21000838AC /* TaskDetailViewController.swift */; };
 		004177121A1FE062000838AC /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004177111A1FE062000838AC /* Answer.swift */; };
+		0054F28A1A2068D600FF8E40 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0054F2891A2068D600FF8E40 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		0041770D1A1FC89B000838AC /* StrikeThroughText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrikeThroughText.swift; sourceTree = "<group>"; };
 		0041770F1A1FDC21000838AC /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		004177111A1FE062000838AC /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		0054F2891A2068D600FF8E40 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0054F28A1A2068D600FF8E40 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +74,7 @@
 		004176D61A1FAA27000838AC = {
 			isa = PBXGroup;
 			children = (
+				0054F2891A2068D600FF8E40 /* CoreLocation.framework */,
 				004176E11A1FAA27000838AC /* MuseumApp */,
 				004176F71A1FAA27000838AC /* MuseumAppTests */,
 				004176E01A1FAA27000838AC /* Products */,
@@ -203,6 +207,11 @@
 				TargetAttributes = {
 					004176DE1A1FAA27000838AC = {
 						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					004176F31A1FAA27000838AC = {
 						CreatedOnToolsVersion = 6.1;
