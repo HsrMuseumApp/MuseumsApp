@@ -74,46 +74,49 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func setupData() {
-        tasks.append(
-            Task(
-                text: "Ist Robin der groesste Homo? jo",
-                id: 1,
-                beacon: Beacon(id: 1,minor: 18479, major: 56048),
-                answers: [
-                    Answer(id: 1, text: "Ja", correct: true),
-                    Answer(id: 2, text: "Nein", correct: false),
-                    Answer(id: 3, text: "Nein", correct: false)
-                ]
-            )
-        )
-        tasks.append(
-            Task(
-                text: "Dies ist die Frage 2",
-                id: 2,
-                beacon: Beacon(id: 2,minor: 1, major: 2),
-                answers: []
-            )
-        )
-        tasks.append(
-            Task(
-                text: "Welches ist Robins Lieblingsfarbe",
-                id: 3,
-                beacon: Beacon(id: 3,minor: 1, major: 2),
-                answers: [
-                    Answer(id: 8, text: "Blau", correct: true),
-                    Answer(id: 9, text: "Rot", correct: false),
-                    Answer(id: 10, text: "Grün", correct: false)
-                ]
-            )
-        )
-        tasks.append(
-            Task(
-                text: "Dies ist die Frage 4",
-                id: 4,
-                beacon: Beacon(id: 4,minor: 1, major: 2),
-                answers: []
-            )
-        )
+        var pool : DataPool = DataPool()
+        pool.initializeDataPool()
+        tasks = pool.taskArray
+//        tasks.append(
+//            Task(
+//                text: "Ist Robin der groesste Homo? jo",
+//                id: 1,
+//                beacon: Beacon(id: "1",minor: 18479, major: 56048),
+//                answers: [
+//                    Answer(id: 1, text: "Ja", correct: true),
+//                    Answer(id: 2, text: "Nein", correct: false),
+//                    Answer(id: 3, text: "Nein", correct: false)
+//                ]
+//            )
+//        )
+//        tasks.append(
+//            Task(
+//                text: "Dies ist die Frage 2",
+//                id: 2,
+//                beacon: Beacon(id: "2",minor: 1, major: 2),
+//                answers: []
+//            )
+//        )
+//        tasks.append(
+//            Task(
+//                text: "Welches ist Robins Lieblingsfarbe",
+//                id: 3,
+//                beacon: Beacon(id: "3",minor: 1, major: 2),
+//                answers: [
+//                    Answer(id: 8, text: "Blau", correct: true),
+//                    Answer(id: 9, text: "Rot", correct: false),
+//                    Answer(id: 10, text: "Grün", correct: false)
+//                ]
+//            )
+//        )
+//        tasks.append(
+//            Task(
+//                text: "Dies ist die Frage 4",
+//                id: 4,
+//                beacon: Beacon(id: "4",minor: 1, major: 2),
+//                answers: []
+//            )
+//        )
     }
     
     func checkIfQuestionsAnswered() {
