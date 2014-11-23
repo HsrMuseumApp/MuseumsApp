@@ -20,6 +20,8 @@
 		004177101A1FDC21000838AC /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0041770F1A1FDC21000838AC /* TaskDetailViewController.swift */; };
 		004177121A1FE062000838AC /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004177111A1FE062000838AC /* Answer.swift */; };
 		0054F28A1A2068D600FF8E40 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0054F2891A2068D600FF8E40 /* CoreLocation.framework */; };
+		8468B91C1A21DD6800C9F7B9 /* HttpConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8468B91B1A21DD6800C9F7B9 /* HttpConnect.swift */; };
+		8468B91E1A21DD8600C9F7B9 /* DataPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8468B91D1A21DD8600C9F7B9 /* DataPool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		0041770F1A1FDC21000838AC /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		004177111A1FE062000838AC /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		0054F2891A2068D600FF8E40 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8468B91B1A21DD6800C9F7B9 /* HttpConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpConnect.swift; sourceTree = "<group>"; };
+		8468B91D1A21DD8600C9F7B9 /* DataPool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 		004176E11A1FAA27000838AC /* MuseumApp */ = {
 			isa = PBXGroup;
 			children = (
+				8468B91A1A21DD4000C9F7B9 /* Rest */,
 				0054F2581A1FF4B900FF8E40 /* ViewController */,
 				0054F2571A1FF4AD00FF8E40 /* UIElements */,
 				004177081A1FAF85000838AC /* Model */,
@@ -156,6 +161,15 @@
 				0041770F1A1FDC21000838AC /* TaskDetailViewController.swift */,
 			);
 			name = ViewController;
+			sourceTree = "<group>";
+		};
+		8468B91A1A21DD4000C9F7B9 /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				8468B91B1A21DD6800C9F7B9 /* HttpConnect.swift */,
+				8468B91D1A21DD8600C9F7B9 /* DataPool.swift */,
+			);
+			name = Rest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +279,8 @@
 			files = (
 				004177101A1FDC21000838AC /* TaskDetailViewController.swift in Sources */,
 				004177121A1FE062000838AC /* Answer.swift in Sources */,
+				8468B91C1A21DD6800C9F7B9 /* HttpConnect.swift in Sources */,
+				8468B91E1A21DD8600C9F7B9 /* DataPool.swift in Sources */,
 				0041770C1A1FB3EA000838AC /* TableViewCell.swift in Sources */,
 				0041770A1A1FAFC7000838AC /* Task.swift in Sources */,
 				0041770E1A1FC89B000838AC /* StrikeThroughText.swift in Sources */,
