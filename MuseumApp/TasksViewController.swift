@@ -76,13 +76,13 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     func setupData() {
         tasks.append(
             Task(
-                text: "Ist Robin der beste Programmierer?",
+                text: "Ist Robin der groesste Homo? jo",
                 id: 1,
-                beacon: Beacon(minor: 18479, major: 56048),
+                beacon: Beacon(id: 1,minor: 18479, major: 56048),
                 answers: [
-                    Answer(text: "Ja", correct: true),
-                    Answer(text: "Nein", correct: false),
-                    Answer(text: "Nein", correct: false)
+                    Answer(id: 1, text: "Ja", correct: true),
+                    Answer(id: 2, text: "Nein", correct: false),
+                    Answer(id: 3, text: "Nein", correct: false)
                 ]
             )
         )
@@ -90,7 +90,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             Task(
                 text: "Dies ist die Frage 2",
                 id: 2,
-                beacon: Beacon(minor: 1, major: 2),
+                beacon: Beacon(id: 2,minor: 1, major: 2),
                 answers: []
             )
         )
@@ -98,11 +98,11 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             Task(
                 text: "Welches ist Robins Lieblingsfarbe",
                 id: 3,
-                beacon: Beacon(minor: 1, major: 2),
+                beacon: Beacon(id: 3,minor: 1, major: 2),
                 answers: [
-                    Answer(text: "Blau", correct: true),
-                    Answer(text: "Rot", correct: false),
-                    Answer(text: "Grün", correct: false)
+                    Answer(id: 8, text: "Blau", correct: true),
+                    Answer(id: 9, text: "Rot", correct: false),
+                    Answer(id: 10, text: "Grün", correct: false)
                 ]
             )
         )
@@ -110,7 +110,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             Task(
                 text: "Dies ist die Frage 4",
                 id: 4,
-                beacon: Beacon(minor: 1, major: 2),
+                beacon: Beacon(id: 4,minor: 1, major: 2),
                 answers: []
             )
         )
