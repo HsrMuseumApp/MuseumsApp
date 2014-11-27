@@ -14,6 +14,7 @@ class DataPool {
     var beacons = Dictionary<String, Beacon>()
     var items = Dictionary<Int, Item>()
     var locations = Dictionary<Int, Location>()
+    var highscores = Dictionary<String, Highscore>()
     var locationArray = [Location]()
     
     func initializeDataPool() {
@@ -71,6 +72,23 @@ class DataPool {
                     var questionArray : [Task] = getQuestionsFromItems(itemIdArray!)
                     var location: Location = Location(id: id!, name: name!, questions: questionArray)
                     locations[id!] = location
+                }
+            }
+        }
+    }
+    
+    func getAllHighscores() {
+        var jsonObject: AnyObject = HttpConnect().HTTPGet(DB_SERVER + LOCATIONS)
+        if let highscoreArray = jsonObject as? NSArray{
+            for var i = 0; i < highscoreArray.count; ++i {
+                if let jsonHighscore = highscoreArray[i] as? NSDictionary{
+                    let groupId = jsonHighscore["groupId"] as Int
+                    let score = jsonHighscore["score"] as Int
+                    let playerName = jsonHighscore["playerName"] as String
+                    let rank = jsonHighscore["rank"] as Int
+                    let hash = jsonHighscore["hash"] as String
+                    var highscore: Highscore = Highscore(groupId: groupId, score: score, playerName: playerName, rank: rank, hashStr: hash)
+                    highscores[playerName] = highscore
                 }
             }
         }
