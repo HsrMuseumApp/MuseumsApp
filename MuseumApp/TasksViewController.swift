@@ -22,7 +22,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         setLocationQuestions(currentLocation)
         
         checkIfQuestionsAnswered()
-        setNavigationButtons()
+        initNavigationToolbar()
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -40,8 +40,12 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     
-    func setNavigationButtons() {
+    func initNavigationToolbar() {
+        var barb = UIBarButtonItem()
         var buttonArray = [UIBarButtonItem]()
+        var flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        
+        buttonArray.append(flex)
         
         let sortedKeys = Array(locations.keys).sorted(<)
         for index in sortedKeys {
@@ -50,7 +54,17 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             button.tag = loc.id
             buttonArray.append(button)
         }
+        buttonArray.append(flex)
         nav.setLeftBarButtonItems(buttonArray, animated: true)
+        
+        var highsc = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Bookmarks, target: nil, action: Selector("showHighScore"))
+        var winnerpodium = UIImage(named:"winner-podium.png")
+        //winnerpodium?.resizingMode = UIImageResizingMode.Tile
+        var highScoreButton = UIBarButtonItem(image: winnerpodium, style: .Bordered, target: self, action: Selector("showHighScore"))
+        highScoreButton.imageInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        //var x = UIBarButtonItem(image: <#UIImage?#>, style: UIBarButtonItemStyle.RawValue, target: <#AnyObject?#>, action: <#Selector#>)
+        nav.setRightBarButtonItem(highScoreButton, animated: false)
+        
     }
     
     func changeTableContentForLocation(sender: UIBarButtonItem) {
@@ -62,6 +76,10 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         var location : Location = locations[currentLocation]!
         tasks = location.questions
         tableView.reloadData()
+    }
+    
+    func showHighScore() {
+        println("SHOOOW HIGHSCOREEE")
     }
     
     // MARK: - Table view data source
