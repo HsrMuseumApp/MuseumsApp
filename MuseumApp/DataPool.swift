@@ -7,16 +7,21 @@ class DataPool {
     final var BEACONS = "beacons"
     final var ITEMS = "items"
     final var ANSWERS = "answers"
+    final var LOCATIONS = "locations"
     
     var tasks = Dictionary<Int, Task>()
     var taskArray = [Task]()
     var beacons = Dictionary<String, Beacon>()
     var items = Dictionary<Int, Item>()
+    var locations = Dictionary<Int, Location>()
+    var locationArray = [Location]()
     
     func initializeDataPool() {
         getAllBeacons()
         getAllQuestions()
+        getAllLocations()
         taskArray = tasks.values.array
+        locationArray = locations.values.array
     }
     
     func getAllQuestions() {
@@ -35,6 +40,64 @@ class DataPool {
                 }
             }
         }
+    }
+    
+
+    
+    
+    func getAllBeacons() {
+        var jsonObject: AnyObject = HttpConnect().HTTPGet(DB_SERVER + BEACONS)
+        if let beaconArray = jsonObject as? NSArray{
+            for var i = 0; i < beaconArray.count; ++i {
+                if let jsonBeacon = beaconArray[i] as? NSDictionary{
+                    let beaconId = jsonBeacon["beaconId"] as? String
+                    let minor = jsonBeacon["minor"] as? NSNumber
+                    let major = jsonBeacon["major"] as? NSNumber
+                    var beacon: Beacon = Beacon(id: beaconId!, minor: minor!, major: major!)
+                    beacons[beaconId!] = beacon
+                }
+            }
+        }
+    }
+    
+    func getAllLocations() {
+        var jsonObject: AnyObject = HttpConnect().HTTPGet(DB_SERVER + LOCATIONS)
+        if let locationArray = jsonObject as? NSArray{
+            for var i = 0; i < locationArray.count; ++i {
+                if let jsonLocation = locationArray[i] as? NSDictionary{
+                    let id = jsonLocation["id"] as? Int
+                    let name = jsonLocation["name"] as? String
+                    let itemIdArray = jsonLocation["items"] as? [Int]
+                    var questionArray : [Task] = getQuestionsFromItems(itemIdArray!)
+                    var location: Location = Location(id: id!, name: name!, questions: questionArray)
+                    locations[id!] = location
+                }
+            }
+        }
+    }
+    
+    func getQuestionsFromItems(itemIdArray: [Int]) -> [Task] {
+        var questionArray = [Task]()
+        
+        for itemId in itemIdArray {
+            questionArray += getQuestionsFromItemId(itemId)
+        }
+        return questionArray
+    }
+    
+    func getQuestionsFromItemId(itemId: Int) -> [Task] {
+        var questionsArray = [Task]()
+        
+        var jsonObject: AnyObject = HttpConnect().HTTPGet("\(DB_SERVER)\(ITEMS)/\(itemId)/\(QUESTIONS)")
+        if let questionArray = jsonObject as? NSArray{
+            for var i = 0; i < questionArray.count; ++i {
+                if let jsonQuestion = questionArray[i] as? NSDictionary{
+                    let id = jsonQuestion["id"] as? Int
+                    questionsArray.append(tasks[id!]!)
+                }
+            }
+        }
+        return questionsArray
     }
     
     func getAnswerFromQuestion(id: Int) -> [Answer]  {
@@ -69,35 +132,6 @@ class DataPool {
             }
         }
         return beaconsArr
-    }
-    
-    
-    func getAllBeacons() {
-        var jsonObject: AnyObject = HttpConnect().HTTPGet(DB_SERVER + BEACONS)
-        if let beaconArray = jsonObject as? NSArray{
-            for var i = 0; i < beaconArray.count; ++i {
-                if let jsonBeacon = beaconArray[i] as? NSDictionary{
-                    let beaconId = jsonBeacon["beaconId"] as? String
-                    let minor = jsonBeacon["minor"] as? NSNumber
-                    let major = jsonBeacon["major"] as? NSNumber
-                    var beacon: Beacon = Beacon(id: beaconId!, minor: minor!, major: major!)
-                    beacons[beaconId!] = beacon
-                }
-            }
-        }
-    }
-    
-    func getAllItems() {
-        var jsonObject: AnyObject = HttpConnect().HTTPGet(DB_SERVER + ITEMS)
-        if let itemArray = jsonObject as? NSArray{
-            for var i = 0; i < itemArray.count; ++i {
-                if let jsonItem = itemArray[i] as? NSDictionary{
-                    let id = jsonItem["id"] as? Int
-                    //var item: Item = Beacon(id: beaconId!, minor: minor!, major: major!)
-                    //items[id] = item
-                }
-            }
-        }
     }
     
 }

@@ -6,6 +6,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
     var tasks = [Task]()
+    var locations = [Location]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +78,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         var pool : DataPool = DataPool()
         pool.initializeDataPool()
         tasks = pool.taskArray
+        locations = pool.locationArray
 //        tasks.append(
 //            Task(
 //                text: "Ist Robin der groesste Homo? jo",
