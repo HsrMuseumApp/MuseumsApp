@@ -141,7 +141,7 @@ class TableViewCell: UITableViewCell {
                 width: bounds.size.width, height: bounds.size.height)
             if completeOnDragRelease {
                 if task != nil {
-                    if(task!.isSelectable) {
+                    //if(task!.isSelectable) {
                         if(task!.answers.count > 0) {
                             if(!task!.completed) {
                                 delegate!.taskAnswerQuestions(task!)
@@ -151,7 +151,7 @@ class TableViewCell: UITableViewCell {
                             taskCompleteLayer.hidden = false
                             task!.completed = true
                         }
-                    }
+                    //}
                     UIView.animateWithDuration(0.2, animations: {self.frame = originalFrame})
                 }
             } else {
