@@ -1,10 +1,3 @@
-//
-//  Highscore.swift
-//  MuseumApp
-//
-//  Created by Dario Andreoli on 27.11.14.
-//  Copyright (c) 2014 HSR. All rights reserved.
-//
 
 import Foundation
 

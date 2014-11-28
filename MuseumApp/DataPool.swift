@@ -15,6 +15,7 @@ class DataPool {
     var items = Dictionary<Int, Item>()
     var locations = Dictionary<Int, Location>()
     var highscores = Dictionary<String, Highscore>()
+    var highscoreArray = [Highscore]()
     var locationArray = [Location]()
     
     func initializeDataPool() {

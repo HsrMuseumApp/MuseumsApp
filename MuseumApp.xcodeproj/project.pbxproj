@@ -20,6 +20,8 @@
 		004177101A1FDC21000838AC /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0041770F1A1FDC21000838AC /* TaskDetailViewController.swift */; };
 		004177121A1FE062000838AC /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004177111A1FE062000838AC /* Answer.swift */; };
 		0054F28A1A2068D600FF8E40 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0054F2891A2068D600FF8E40 /* CoreLocation.framework */; };
+		547842491A2794A100D5451A /* Highscore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547842481A2794A100D5451A /* Highscore.swift */; };
+		5478424B1A27966200D5451A /* HighscoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5478424A1A27966200D5451A /* HighscoreViewController.swift */; };
 		8401F6BB1A221B2600E1D10A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8401F6BA1A221B2600E1D10A /* Item.swift */; };
 		844CA1A21A2743910026B26D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CA1A11A2743910026B26D /* Location.swift */; };
 		8468B91C1A21DD6800C9F7B9 /* HttpConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8468B91B1A21DD6800C9F7B9 /* HttpConnect.swift */; };
@@ -54,6 +56,8 @@
 		0041770F1A1FDC21000838AC /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		004177111A1FE062000838AC /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		0054F2891A2068D600FF8E40 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		547842481A2794A100D5451A /* Highscore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highscore.swift; sourceTree = "<group>"; };
+		5478424A1A27966200D5451A /* HighscoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighscoreViewController.swift; sourceTree = "<group>"; };
 		8401F6BA1A221B2600E1D10A /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		844CA1A11A2743910026B26D /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		8468B91B1A21DD6800C9F7B9 /* HttpConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpConnect.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 		004177081A1FAF85000838AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				547842481A2794A100D5451A /* Highscore.swift */,
 				004177061A1FAF7E000838AC /* Beacon.swift */,
 				004177091A1FAFC7000838AC /* Task.swift */,
 				004177111A1FE062000838AC /* Answer.swift */,
@@ -165,6 +170,7 @@
 			children = (
 				004176E61A1FAA27000838AC /* TasksViewController.swift */,
 				0041770F1A1FDC21000838AC /* TaskDetailViewController.swift */,
+				5478424A1A27966200D5451A /* HighscoreViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -287,6 +293,7 @@
 				004177121A1FE062000838AC /* Answer.swift in Sources */,
 				8468B91C1A21DD6800C9F7B9 /* HttpConnect.swift in Sources */,
 				8468B91E1A21DD8600C9F7B9 /* DataPool.swift in Sources */,
+				547842491A2794A100D5451A /* Highscore.swift in Sources */,
 				0041770C1A1FB3EA000838AC /* TableViewCell.swift in Sources */,
 				0041770A1A1FAFC7000838AC /* Task.swift in Sources */,
 				8401F6BB1A221B2600E1D10A /* Item.swift in Sources */,
@@ -295,6 +302,7 @@
 				004176E51A1FAA27000838AC /* AppDelegate.swift in Sources */,
 				844CA1A21A2743910026B26D /* Location.swift in Sources */,
 				004177071A1FAF7E000838AC /* Beacon.swift in Sources */,
+				5478424B1A27966200D5451A /* HighscoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
