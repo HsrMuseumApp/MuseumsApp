@@ -48,7 +48,7 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
             //let question:Question = questions[indexPath.row]
             //let beacon:CLBeacon? = getBeacon(question.beaconId)
             
-            //cell.textLabel.text = score.playerName + ": " + score.score.description
+            cell.textLabel!.text = score.playerName + ": " + score.score.description
             
             
             return cell

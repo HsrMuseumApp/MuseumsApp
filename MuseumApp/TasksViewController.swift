@@ -30,7 +30,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.separatorStyle = .None
         tableView.rowHeight = 50.0
         tableView.backgroundColor = UIColor.blackColor()
-        
+        showHelp()
 
     }
     
@@ -38,7 +38,6 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
-    
     
     func initNavigationToolbar() {
         var barb = UIBarButtonItem()
@@ -57,14 +56,14 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         buttonArray.append(flex)
         nav.setLeftBarButtonItems(buttonArray, animated: true)
         
-        var highsc = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Bookmarks, target: nil, action: Selector("showHighScore"))
         var winnerpodium = UIImage(named:"winner-podium.png")
-        //winnerpodium?.resizingMode = UIImageResizingMode.Tile
         var highScoreButton = UIBarButtonItem(image: winnerpodium, style: .Bordered, target: self, action: Selector("showHighScore"))
         highScoreButton.imageInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        //var x = UIBarButtonItem(image: <#UIImage?#>, style: UIBarButtonItemStyle.RawValue, target: <#AnyObject?#>, action: <#Selector#>)
         nav.setRightBarButtonItem(highScoreButton, animated: false)
         
+        
+        var helpButton = UIBarButtonItem(title: "Help", style: .Bordered, target: self, action: Selector("showHelp"))
+        nav.setLeftBarButtonItem(helpButton, animated: false)
     }
     
     func changeTableContentForLocation(sender: UIBarButtonItem) {
@@ -80,14 +79,17 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func showHighScore() {
         println("SHOOOW HIGHSCOREEE")
-        //let vc = HighscoreViewController(nibName: "HighscoreViewController", bundle: nil)
-        //navigationController?.pushViewController(vc, animated: true)
-        //let highscoreViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HighscoreViewController") as HighscoreViewController
-        //taskDetailViewController.task = task
-        //self.presentViewController(highscoreViewController, animated: true, completion: nil)
+        self.performSegueWithIdentifier("showHighscore", sender: self)
         
 
 
+    }
+    
+    func showHelp() {
+        println("SHOOOW HEEEELP")
+        /* let introViewController = self.storyboard?.instantiateViewControllerWithIdentifier("IntroViewController") as IntroViewController
+        self.presentViewController(introViewController, animated: true, completion: nil) */
+        self.performSegueWithIdentifier("showIntro", sender: self)
     }
     
     // MARK: - Table view data source

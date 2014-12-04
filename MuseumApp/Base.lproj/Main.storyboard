@@ -44,11 +44,13 @@
                     <connections>
                         <outlet property="nav" destination="Q4W-Rv-Ghg" id="CvK-Tm-GGW"/>
                         <outlet property="tableView" destination="FN3-rK-msQ" id="jVR-3f-hpS"/>
+                        <segue destination="d7m-gf-hEB" kind="show" identifier="showIntro" id="MPW-LI-opy"/>
+                        <segue destination="ESP-qa-6ll" kind="show" identifier="showHighscore" id="Yu1-zc-GHu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2045" y="1242"/>
+            <point key="canvasLocation" x="2041" y="1196"/>
         </scene>
         <!--Highscore View Controller-->
         <scene sceneID="WSQ-8W-Gzl">
@@ -75,6 +77,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yzt-Qn-GNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2089" y="414"/>
+        </scene>
+        <!--Intro View Controller-->
+        <scene sceneID="a23-wX-o7S">
+            <objects>
+                <viewController storyboardIdentifier="IntroViewController" id="d7m-gf-hEB" customClass="IntroViewController" customModule="MuseumApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8uq-QJ-wgv"/>
+                        <viewControllerLayoutGuide type="bottom" id="11r-Bv-9Ud"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3U5-5B-XTy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qS-ck-8BE">
+                                <rect key="frame" x="16" y="0.0" width="251" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="introText" destination="5qS-ck-8BE" id="zLU-X9-TuW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QfY-wK-aoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1355" y="1944"/>
         </scene>
         <!--Task Detail View Controller-->
         <scene sceneID="ZIZ-q4-ecQ">
@@ -249,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RQI-dH-tlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1355" y="1144"/>
+            <point key="canvasLocation" x="969" y="1184"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gYM-ws-wPP">
@@ -264,6 +297,7 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Czi-W8-TfB"/>
+                        <segue destination="d7m-gf-hEB" kind="show" identifier="showIntro" id="D0C-Xp-zJR"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5S-hw-vNb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -271,4 +305,7 @@
             <point key="canvasLocation" x="1323" y="470"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="MPW-LI-opy"/>
+    </inferredMetricsTieBreakers>
 </document>
