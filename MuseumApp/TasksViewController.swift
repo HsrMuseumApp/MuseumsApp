@@ -80,6 +80,14 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func showHighScore() {
         println("SHOOOW HIGHSCOREEE")
+        //let vc = HighscoreViewController(nibName: "HighscoreViewController", bundle: nil)
+        //navigationController?.pushViewController(vc, animated: true)
+        //let highscoreViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HighscoreViewController") as HighscoreViewController
+        //taskDetailViewController.task = task
+        //self.presentViewController(highscoreViewController, animated: true, completion: nil)
+        
+
+
     }
     
     // MARK: - Table view data source

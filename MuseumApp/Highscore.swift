@@ -6,9 +6,9 @@ class Highscore: NSObject {
     var score: Int
     var playerName: String
     var rank: Int
-    var hashStr: String
+    var hashStr: String?
     
-    init(groupId: Int, score: Int, playerName: String, rank: Int, hashStr: String) {
+    init(groupId: Int, score: Int, playerName: String, rank: Int, hashStr: String?) {
         self.groupId = groupId
         self.score = score
         self.playerName = playerName

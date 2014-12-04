@@ -2,18 +2,21 @@
 import UIKit
 
 class HighscoreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     @IBOutlet weak var tableView: UITableView!
     let kCellIdentifier: String = "playerCell"
     var highscores = [Highscore]()
+    var pool = DataPool()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if highscores.count == 0 {
             getHighscoreData()
-
+            //tableView.reloadData()
         }
+        
+        tableView.dataSource = self
         
         
     }
@@ -24,7 +27,7 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func getHighscoreData() {
-        var pool : DataPool = DataPool()
+        //var pool : DataPool = DataPool()
         pool.initializeDataPool()
         highscores = pool.highscoreArray
     }
@@ -45,7 +48,7 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
             //let question:Question = questions[indexPath.row]
             //let beacon:CLBeacon? = getBeacon(question.beaconId)
             
-            cell.textLabel.text = score.playerName
+            //cell.textLabel.text = score.playerName + ": " + score.score.description
             
             
             return cell
