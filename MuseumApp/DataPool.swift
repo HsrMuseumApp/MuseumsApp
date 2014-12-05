@@ -8,13 +8,14 @@ class DataPool {
     final var ITEMS = "items"
     final var ANSWERS = "answers"
     final var LOCATIONS = "locations"
+    final var HIGHSCORES = "highscores"
     
     var tasks = Dictionary<Int, Task>()
     var taskArray = [Task]()
     var beacons = Dictionary<String, Beacon>()
     var items = Dictionary<Int, Item>()
     var locations = Dictionary<Int, Location>()
-    var highscores = Dictionary<String, Highscore>()
+    var highscores = Dictionary<Int, Highscore>()
     var highscoreArray = [Highscore]()
     var locationArray = [Location]()
     
@@ -22,8 +23,10 @@ class DataPool {
         getAllBeacons()
         getAllQuestions()
         getAllLocations()
+        getAllHighscores()
         taskArray = tasks.values.array
         locationArray = locations.values.array
+        highscoreArray = highscores.values.array
     }
     
     func getAllQuestions() {
@@ -79,7 +82,7 @@ class DataPool {
     }
     
     func getAllHighscores() {
-        var jsonObject: AnyObject = HttpConnect().HTTPGet(DB_SERVER + LOCATIONS)
+        var jsonObject: AnyObject = HttpConnect().HTTPGet(DB_SERVER + HIGHSCORES)
         if let highscoreArray = jsonObject as? NSArray{
             for var i = 0; i < highscoreArray.count; ++i {
                 if let jsonHighscore = highscoreArray[i] as? NSDictionary{
@@ -87,9 +90,10 @@ class DataPool {
                     let score = jsonHighscore["score"] as Int
                     let playerName = jsonHighscore["playerName"] as String
                     let rank = jsonHighscore["rank"] as Int
-                    let hash = jsonHighscore["hash"] as String
+                    let hash = jsonHighscore["hash"] as? String
                     var highscore: Highscore = Highscore(groupId: groupId, score: score, playerName: playerName, rank: rank, hashStr: hash)
-                    highscores[playerName] = highscore
+                    highscores[rank] = highscore
+                    
                 }
             }
         }

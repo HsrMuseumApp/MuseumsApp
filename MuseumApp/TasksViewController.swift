@@ -79,6 +79,10 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func showHighScore() {
         println("SHOOOW HIGHSCOREEE")
+        self.performSegueWithIdentifier("showHighscore", sender: self)
+        
+
+
     }
     
     func showHelp() {
