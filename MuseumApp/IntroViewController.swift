@@ -8,15 +8,36 @@
 
 import UIKit
 import SystemConfiguration
+import CoreBluetooth
 
-class IntroViewController: UIViewController {
+class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
     
     @IBOutlet weak var introText: UITextView!
+    
+    var peripheralManager : CBPeripheralManager?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         println("viewDidLoad")
-        var a = isConnectedToNetwork()
-        println(a)
+        
+        if (!isConnectedToNetwork()) {
+            let controller = UIAlertController(title: "Internet",
+                message: "Sie sind zur Zeit nicht mit dem Internet verbunden. Bitte stellen Sie sicher, dass Sie eine Verbindung haben.",
+                preferredStyle: .Alert)
+            
+            controller.addAction(UIAlertAction(title: "OK",
+                style: .Default,
+                handler: nil))
+            
+            presentViewController(controller, animated: true, completion: nil)
+        }
+        
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        let options: Dictionary<NSString, AnyObject> = [ CBPeripheralManagerOptionShowPowerAlertKey: false ]
+        peripheralManager = CBPeripheralManager(delegate: self, queue: queue, options: options)
+        if let manager = peripheralManager{
+            manager.delegate = self
+        }
     }
     
     @IBAction func closeView(sender: AnyObject) {
@@ -46,6 +67,24 @@ class IntroViewController: UIViewController {
         let needsConnection = (flags & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
         
         return (isReachable && !needsConnection) ? true : false
+    }
+    
+    func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!){
+
+        if peripheral.state != .PoweredOn{
+            
+            let controller = UIAlertController(title: "Bluetooth",
+                message: "Bluetooth ist zur Zeit deaktiviert. Bitte aktivieren Sie Bluetooth um die App nutzen zu können.",
+                preferredStyle: .Alert)
+            
+            controller.addAction(UIAlertAction(title: "OK",
+                style: .Default,
+                handler: nil))
+            
+            presentViewController(controller, animated: true, completion: nil)
+            
+        }
+        
     }
 
     

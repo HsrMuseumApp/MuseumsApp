@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        let uuidString = "B9407F30-F5F8-466E-AFF9-25556B57FE6D"
+        let uuidString = "f7826da6-4fa2-4e98-8024-bc5b71e0893e"
         let beaconIdentifier = "iBeaconModules.us"
         let beaconUUID:NSUUID = NSUUID(UUIDString: uuidString)!
         let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID,
@@ -72,8 +72,11 @@ extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!,
         didRangeBeacons beacons: [AnyObject]!,
         inRegion region: CLBeaconRegion!) {
+            
+            var rootViewController = self.window!.rootViewController as UINavigationController
 
-            let tasksViewController:TasksViewController = window!.rootViewController as TasksViewController
+
+            let tasksViewController:TasksViewController = rootViewController.viewControllers[0] as TasksViewController
             
             
             var tasks = tasksViewController.tasks

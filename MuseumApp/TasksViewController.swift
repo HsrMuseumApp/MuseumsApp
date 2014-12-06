@@ -126,9 +126,6 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func showHighScore() {
         self.performSegueWithIdentifier("showHighscore", sender: self)
-        
-
-
     }
     
     func showHelp() {

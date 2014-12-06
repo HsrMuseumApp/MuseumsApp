@@ -27,6 +27,7 @@
 		A35C13041A2895EF00AA8F36 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004176ED1A1FAA27000838AC /* LaunchScreen.xib */; };
 		A35C13071A2898C000AA8F36 /* HighscoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C13061A2898C000AA8F36 /* HighscoreViewController.swift */; };
 		A35C13081A2898F000AA8F36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 004176E81A1FAA27000838AC /* Main.storyboard */; };
+		A35F3B2E1A333668000BAA70 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35F3B2D1A333668000BAA70 /* CoreBluetooth.framework */; };
 		C4CE381D1A2EF0AB0029D07D /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CE381C1A2EF0AB0029D07D /* IntroViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		8468B91B1A21DD6800C9F7B9 /* HttpConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpConnect.swift; sourceTree = "<group>"; };
 		8468B91D1A21DD8600C9F7B9 /* DataPool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPool.swift; sourceTree = "<group>"; };
 		A35C13061A2898C000AA8F36 /* HighscoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighscoreViewController.swift; sourceTree = "<group>"; };
+		A35F3B2D1A333668000BAA70 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C4CE381C1A2EF0AB0029D07D /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A35F3B2E1A333668000BAA70 /* CoreBluetooth.framework in Frameworks */,
 				0054F28A1A2068D600FF8E40 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +93,7 @@
 		004176D61A1FAA27000838AC = {
 			isa = PBXGroup;
 			children = (
+				A35F3B2D1A333668000BAA70 /* CoreBluetooth.framework */,
 				0054F2891A2068D600FF8E40 /* CoreLocation.framework */,
 				004176E11A1FAA27000838AC /* MuseumApp */,
 				004176F71A1FAA27000838AC /* MuseumAppTests */,
