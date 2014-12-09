@@ -5,7 +5,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nav: UINavigationItem!
     
-    var pool = DataPool()
+    var pool:DataPool?
     var tasks = [Task]()
     var locations = Dictionary<Int, Location>()
     var currentLocation = 1
@@ -13,18 +13,15 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if tasks.count > 0 {
-            return
+        if tasks.count == 0 {
+            showHelp()
+            
+            
         }
-        
-        pool.initializeDataPool()
-        locations = pool.locations
-        setLocationQuestions(currentLocation)
         
         checkIfQuestionsAnswered()
         
-        initNavigationToolbarTest()
-
+        //initNavigationToolbarTest()
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -32,7 +29,6 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.separatorStyle = .None
         tableView.rowHeight = 50.0
         tableView.backgroundColor = UIColor.blackColor()
-        showHelp()
 
     }
     
@@ -66,27 +62,11 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         nav.setLeftBarButtonItem(helpButton, animated: false)
     }
     
-    func initNavigationToolbarTest() {
+    func initNavigationToolbarRooms() {
+        
         var cview = UIView()
         cview.frame = CGRect(x: 0.0, y: 0.0, width: CGRectGetWidth(self.view.bounds) , height: 40)
         var pos_x = 10.0
-        for index in Array(locations.keys).sorted(<) {
-            var loc = locations[index]!
-            var button = UIButton.buttonWithType(UIButtonType.System) as UIButton
-            button.tag = loc.id
-
-            button.setTitle(String(loc.id), forState: UIControlState.Normal)
-            
-            button.frame = CGRect(x: pos_x , y: 5.0, width: 20, height: 20)
-            button.layer.borderColor = UIColor.blackColor().CGColor
-            button.layer.cornerRadius = 0.5 * button.bounds.size.width
-            button.layer.borderWidth = 0.5
-            button.layer.frame = CGRect (x: pos_x, y: 5.0, width: 20.0, height: 20.0)
-            
-            button.addTarget(self, action: Selector("changeTableContentForLocation:"), forControlEvents: UIControlEvents.TouchUpInside)
-            cview.addSubview(button)
-            pos_x += 25.0
-        }
         
         var helpButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
         helpButton.setTitle("?", forState: UIControlState.Normal)
@@ -97,19 +77,41 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         helpButton.addTarget(self, action: Selector("showHelp"), forControlEvents: UIControlEvents.TouchUpInside)
         cview.addSubview(helpButton)
         
-        var scoreButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
-        var winnerpodium = UIImage(named:"winner-podium.png")
-        scoreButton.setImage(winnerpodium, forState: UIControlState.Normal)
-        scoreButton.layer.frame = CGRect (x: CGRectGetWidth(self.view.bounds)-80, y: 5.0, width: 20.0, height: 20.0)
-        scoreButton.layer.borderColor = UIColor.blackColor().CGColor
-        scoreButton.layer.cornerRadius = 0.5 * helpButton.bounds.size.width
-        scoreButton.layer.borderWidth = 0.5
-        scoreButton.addTarget(self, action: Selector("showHighScore"), forControlEvents: UIControlEvents.TouchUpInside)
-        cview.addSubview(scoreButton)
+        if (tasks.count > 0) {
+            for index in Array(locations.keys).sorted(<) {
+                var loc = locations[index]!
+                var button = UIButton.buttonWithType(UIButtonType.System) as UIButton
+                button.tag = loc.id
+
+                button.setTitle(String(loc.id), forState: UIControlState.Normal)
+                
+                button.frame = CGRect(x: pos_x , y: 5.0, width: 20, height: 20)
+                button.layer.borderColor = UIColor.blackColor().CGColor
+                button.layer.cornerRadius = 0.5 * button.bounds.size.width
+                button.layer.borderWidth = 0.5
+                button.layer.frame = CGRect (x: pos_x, y: 5.0, width: 20.0, height: 20.0)
+                
+                button.addTarget(self, action: Selector("changeTableContentForLocation:"), forControlEvents: UIControlEvents.TouchUpInside)
+                cview.addSubview(button)
+                pos_x += 25.0
+            }
+            
+            
+        }
         
+        if (pool?.highscores.count > 0) {
+            var scoreButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+            var winnerpodium = UIImage(named:"winner-podium.png")
+            scoreButton.setImage(winnerpodium, forState: UIControlState.Normal)
+            scoreButton.layer.frame = CGRect (x: CGRectGetWidth(self.view.bounds)-80, y: 5.0, width: 20.0, height: 20.0)
+            scoreButton.layer.borderColor = UIColor.blackColor().CGColor
+            scoreButton.layer.cornerRadius = 0.5 * helpButton.bounds.size.width
+            scoreButton.layer.borderWidth = 0.5
+            scoreButton.addTarget(self, action: Selector("showHighScore"), forControlEvents: UIControlEvents.TouchUpInside)
+            cview.addSubview(scoreButton)
+        }
         
-        
-        
+ 
         nav.titleView = cview
     }
     
