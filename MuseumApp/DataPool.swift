@@ -54,6 +54,17 @@ class DataPool : NSObject, NSCoding {
         locationArray = locations.values.array
         highscoreArray = highscores.values.array
         
+        var answeredQuestions: [Int]? = NSUserDefaults.standardUserDefaults().objectForKey("answeredQuestions") as [Int]?
+        if(answeredQuestions != nil) {
+            for task in taskArray {
+                for actualId in answeredQuestions! {
+                    if(actualId == task.id) {
+                        task.completed = true
+                    }
+                }
+            }
+        }
+        
         let encodedPool = NSKeyedArchiver.archivedDataWithRootObject(self)
         NSUserDefaults.standardUserDefaults().setObject(encodedPool, forKey: "pool")
     }
