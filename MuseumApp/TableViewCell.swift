@@ -21,7 +21,6 @@ class TableViewCell: UITableViewCell {
             label.text = task!.text
             label.strikeThrough = task!.completed
             if(task!.completed) {
-                    label.strikeThrough = true
                     taskCompleteLayer.hidden = false
             } else if(task!.isSelectable){
                 taskSelectableLayer.hidden = false

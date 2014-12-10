@@ -1,6 +1,10 @@
 import UIKit
 
-class TasksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TableViewCellDelegate {
+protocol getScoreFromDetailDeleagte {
+    func getScoreFromDetail(score:Int)
+}
+
+class TasksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TableViewCellDelegate, getScoreFromDetailDeleagte {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nav: UINavigationItem!
@@ -9,6 +13,8 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     var tasks = [Task]()
     var locations = Dictionary<Int, Location>()
     var currentLocation = 1
+    
+    var score = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,30 +43,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.reloadData()
     }
     
-    func initNavigationToolbar() {
-        var buttonArray = [UIBarButtonItem]()
-        var flex = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-        
-        buttonArray.append(flex)
-        
-        for index in Array(locations.keys).sorted(<) {
-            var loc = locations[index]!
-            var button = UIBarButtonItem(title: String(loc.id), style: .Plain, target: self, action: Selector("changeTableContentForLocation:"))
-            button.tag = loc.id
-            buttonArray.append(button)
-        }
-        buttonArray.append(flex)
-        nav.setLeftBarButtonItems(buttonArray, animated: true)
-        
-        var winnerpodium = UIImage(named:"winner-podium.png")
-        var highScoreButton = UIBarButtonItem(image: winnerpodium, style: .Bordered, target: self, action: Selector("showHighScore"))
-        highScoreButton.imageInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        nav.setRightBarButtonItem(highScoreButton, animated: false)
-        
-        
-        var helpButton = UIBarButtonItem(title: "Help", style: .Bordered, target: self, action: Selector("showHelp"))
-        nav.setLeftBarButtonItem(helpButton, animated: false)
-    }
+
     
     func initNavigationToolbarRooms() {
         
@@ -139,6 +122,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             let encodedPool = NSKeyedArchiver.archivedDataWithRootObject(pool!)
             NSUserDefaults.standardUserDefaults().setObject(encodedPool, forKey: "pool")
         }
+        NSUserDefaults.standardUserDefaults().setInteger(score, forKey: "score")
         
     }
     
@@ -146,6 +130,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         if (segue.identifier == "showHighscore") {
             var svc = segue.destinationViewController as HighscoreViewController
             svc.pool = self.pool!
+            svc.score = score
             svc.highscores = self.pool!.highscoreArray
         }
     }
@@ -175,6 +160,8 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     func taskAnswerQuestions(task: Task) {
         let taskDetailViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TaskDetailViewController") as TaskDetailViewController
         taskDetailViewController.task = task
+        taskDetailViewController.score = score
+        taskDetailViewController.delegate = self
         self.presentViewController(taskDetailViewController, animated: true, completion: nil)
     }
     
@@ -205,13 +192,18 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func resetUserDefaults(sender: AnyObject) {
-        println("reset ausgeführt")
         for task in self.tasks {
             task.completed = false
         }
         tableView.reloadData()
         var defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject([], forKey: "answeredQuestions")
+        defaults.setInteger(0, forKey: "score")
+        score = 0
+    }
+    
+    func getScoreFromDetail(score: Int) {
+        self.score = score
     }
 
 }

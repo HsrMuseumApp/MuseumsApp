@@ -14,8 +14,10 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
         super.viewDidLoad()
         btnLoadData.hidden = true
 
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        
         if (!isConnectedToNetwork()) {
-            var userDefaults = NSUserDefaults.standardUserDefaults()
+            
             if let dataPool:NSData = userDefaults.valueForKey("pool") as? NSData {
                 getSavedData()
                 
@@ -45,6 +47,7 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
                     handler: nil))
                 
                 presentViewController(controller, animated: true, completion: nil)
+                
                 btnLoadData.hidden = false
                 let rootViewController = self.navigationController
                 let tasksViewController:TasksViewController = rootViewController!.viewControllers[0] as TasksViewController
@@ -52,6 +55,10 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
                 tasksViewController.initNavigationToolbarRooms()
             }
             
+        }
+        
+        if let score:Int = userDefaults.valueForKey("score") as? Int {
+            getSavedScore()
         }
         
         let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
@@ -125,6 +132,16 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
         tasksViewController.locations = dataPool.locations
         tasksViewController.setLocationQuestions(1)
         tasksViewController.initNavigationToolbarRooms()
+    }
+    
+    func getSavedScore() {
+        var score = NSUserDefaults.standardUserDefaults().integerForKey("score")
+        
+        let rootViewController = self.navigationController
+        let tasksViewController:TasksViewController = rootViewController!.viewControllers[0] as TasksViewController
+
+        tasksViewController.score = score
+
     }
     
     func isConnectedToNetwork() -> Bool {

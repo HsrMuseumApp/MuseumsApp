@@ -17,6 +17,10 @@ class TaskDetailViewController: UIViewController {
     @IBOutlet weak var btnAnswerTwo: UIButton!
     @IBOutlet weak var btnAnswerThree: UIButton!
     
+    var score: Int?
+    
+    var delegate:getScoreFromDetailDeleagte?
+    
     var btnArray:[UIButton] = []
     
     override func viewDidLoad() {
@@ -64,6 +68,7 @@ class TaskDetailViewController: UIViewController {
             var btnSelected:UIButton = self.btnArray[selectedAnswer!]
             btnSelected.backgroundColor = UIColor.greenColor()
             errorMessage.text = "Korrekt, weiter gehts!"
+            score!++
         } else {
             errorMessage.text = "Leider falsch, versuchs mit der nächsten Frage"
             
@@ -78,6 +83,13 @@ class TaskDetailViewController: UIViewController {
                 }
                 i++
             }
+            
+            if (score > 0) {
+                score!--
+            }
         }
+        
+        delegate?.getScoreFromDetail(score!)
     }
+    
 }

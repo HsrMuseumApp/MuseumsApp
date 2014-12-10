@@ -9,6 +9,7 @@ class HttpConnect {
         return jsonObject
     }
     
+    
    
     func HTTPGet(urlString: String) -> AnyObject {
         let url = NSURL(string: urlString)
@@ -18,7 +19,25 @@ class HttpConnect {
         var response: NSURLResponse?
         var error: NSErrorPointer = nil
         var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: error)
-        //var reply = NSString(data: data!, encoding: NSUTF8StringEncoding
+
+        return JSONParse(data!)
+    }
+    
+    func HTTPPost(urlString: String, parameters: String) -> AnyObject {
+        let url = NSURL(string: urlString)
+        var request = NSMutableURLRequest(URL: url!)
+        request.setValue("application/json" , forHTTPHeaderField: "Content-Type")
+        request.HTTPMethod = "POST"
+
+        var bodyData = (parameters as NSString).dataUsingEncoding(NSUTF8StringEncoding)
+        var requestBodyData: NSData = bodyData!
+        
+        request.HTTPBody = requestBodyData
+        
+        var response: NSURLResponse?
+        var error: NSErrorPointer = nil
+        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: error)
+        
         return JSONParse(data!)
     }
     
