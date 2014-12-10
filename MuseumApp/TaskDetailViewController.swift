@@ -17,7 +17,7 @@ class TaskDetailViewController: UIViewController {
     @IBOutlet weak var btnAnswerTwo: UIButton!
     @IBOutlet weak var btnAnswerThree: UIButton!
     
-    @IBOutlet weak var btnSendAnswer: UIButton!
+    var btnArray:[UIButton] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,50 +26,58 @@ class TaskDetailViewController: UIViewController {
         txtAnswerOne.text = task!.answers[0].text
         txtAnswerTwo.text = task!.answers[1].text
         txtAnswerThree.text = task!.answers[2].text
+
+        errorMessage.text = ""
         
-        btnSendAnswer.enabled = false
-        errorMessage.text = ""   
+        btnArray = [self.btnAnswerOne, btnAnswerTwo, btnAnswerThree]
     }
 
 
     @IBAction func answerOnePressed(sender: AnyObject) {
-        resetButton()
-        btnAnswerOne.backgroundColor = UIColor.greenColor()
         self.selectedAnswer = 0
+        checkAnswer()
     }
     
     @IBAction func answerTwoPressed(sender: AnyObject) {
-        resetButton()
-        btnAnswerTwo.backgroundColor = UIColor.greenColor()
         self.selectedAnswer = 1
+        checkAnswer()
     }
     
     @IBAction func answerThreePressed(sender: AnyObject) {
-        resetButton()
-        btnAnswerThree.backgroundColor = UIColor.greenColor()
         self.selectedAnswer = 2
-    }
-    
-    func resetButton() {
-        btnAnswerOne.backgroundColor = UIColor.lightGrayColor()
-        btnAnswerTwo.backgroundColor = UIColor.lightGrayColor()
-        btnAnswerThree.backgroundColor = UIColor.lightGrayColor()
-        
-        btnSendAnswer.enabled = true
-        btnSendAnswer.backgroundColor = UIColor.greenColor()
-        errorMessage.text = ""
+        checkAnswer()
     }
     
     @IBAction func closeView(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func sendAnswer(sender: AnyObject) {
+    func checkAnswer() {
+        task?.completed = true
+        
+        for btn in btnArray {
+            btn.enabled = false
+        }
+        
         if(task!.answers[self.selectedAnswer!].correct) {
-            task?.completed = true
-            self.dismissViewControllerAnimated(true, completion: nil)
+            
+            var btnSelected:UIButton = self.btnArray[selectedAnswer!]
+            btnSelected.backgroundColor = UIColor.greenColor()
+            errorMessage.text = "Korrekt, weiter gehts!"
         } else {
-            errorMessage.text = "Falsche Antwort. Probiere es nochmals!"
+            errorMessage.text = "Leider falsch, versuchs mit der nächsten Frage"
+            
+            var btnSelected:UIButton = self.btnArray[selectedAnswer!]
+            btnSelected.backgroundColor = UIColor.redColor()
+            
+            var i = 0
+            for answer in task!.answers {
+                if answer.correct {
+                    var btnCorrect:UIButton = self.btnArray[i]
+                    btnCorrect.backgroundColor = UIColor.greenColor()
+                }
+                i++
+            }
         }
     }
 }
