@@ -13,30 +13,52 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         btnLoadData.hidden = true
+
+        if (!isConnectedToNetwork()) {
+            var userDefaults = NSUserDefaults.standardUserDefaults()
+            if let dataPool:NSData = userDefaults.valueForKey("pool") as? NSData {
+                getSavedData()
+                
+                let controller = UIAlertController(title: "Daten veraltet",
+                    message: "Sie sind zur Zeit nicht mit dem Internet verbunden. Möglicherweise sind Ihre Daten auf einem alten Stand.",
+                    preferredStyle: .Alert)
+                
+                controller.addAction(UIAlertAction(title: "OK",
+                    style: .Default,
+                    handler: nil))
+                
+                presentViewController(controller, animated: true, completion: nil)
+                
+                btnLoadData.hidden = false
+                let rootViewController = self.navigationController
+                let tasksViewController:TasksViewController = rootViewController!.viewControllers[0] as TasksViewController
+                
+                tasksViewController.initNavigationToolbarRooms()
+            }
+            else {
+                let controller = UIAlertController(title: "Internet",
+                    message: "Sie sind zur Zeit nicht mit dem Internet verbunden. Um das Spiel zu starten, stellen Sie bitte sicher, dass Sie eine Verbindung haben.",
+                    preferredStyle: .Alert)
+                
+                controller.addAction(UIAlertAction(title: "OK",
+                    style: .Default,
+                    handler: nil))
+                
+                presentViewController(controller, animated: true, completion: nil)
+                btnLoadData.hidden = false
+                let rootViewController = self.navigationController
+                let tasksViewController:TasksViewController = rootViewController!.viewControllers[0] as TasksViewController
+                
+                tasksViewController.initNavigationToolbarRooms()
+            }
+            
+        }
         
         let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
         let options: Dictionary<NSString, AnyObject> = [ CBPeripheralManagerOptionShowPowerAlertKey: false ]
         peripheralManager = CBPeripheralManager(delegate: self, queue: queue, options: options)
         if let manager = peripheralManager{
             manager.delegate = self
-        }
-        
-
-        if (!isConnectedToNetwork()) {
-            let controller = UIAlertController(title: "Internet",
-                message: "Sie sind zur Zeit nicht mit dem Internet verbunden. Bitte stellen Sie sicher, dass Sie eine Verbindung haben.",
-                preferredStyle: .Alert)
-            
-            controller.addAction(UIAlertAction(title: "OK",
-                style: .Default,
-                handler: nil))
-            
-            presentViewController(controller, animated: true, completion: nil)
-            btnLoadData.hidden = false
-            let rootViewController = self.navigationController
-            let tasksViewController:TasksViewController = rootViewController!.viewControllers[0] as TasksViewController
-
-            tasksViewController.initNavigationToolbarRooms()
         }
         
         
@@ -55,6 +77,7 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
             presentViewController(controller, animated: true, completion: nil)
         } else {
             loadAllData()
+            self.navigationController!.popViewControllerAnimated(true)
         }
     }
     
@@ -84,6 +107,22 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
         tasksViewController.pool = pool
         
         tasksViewController.locations = pool.locations
+        tasksViewController.setLocationQuestions(1)
+        tasksViewController.initNavigationToolbarRooms()
+        
+    }
+    
+    func getSavedData() {
+        
+        var pool = NSUserDefaults.standardUserDefaults().objectForKey("pool") as NSData
+        
+        var dataPool = NSKeyedUnarchiver.unarchiveObjectWithData(pool) as DataPool
+    
+        let rootViewController = self.navigationController
+        let tasksViewController:TasksViewController = rootViewController!.viewControllers[0] as TasksViewController
+        
+        tasksViewController.pool = dataPool
+        tasksViewController.locations = dataPool.locations
         tasksViewController.setLocationQuestions(1)
         tasksViewController.initNavigationToolbarRooms()
     }

@@ -21,8 +21,6 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         checkIfQuestionsAnswered()
         
-        //initNavigationToolbarTest()
-        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: "cell")
@@ -131,9 +129,18 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func showHelp() {
-        /* let introViewController = self.storyboard?.instantiateViewControllerWithIdentifier("IntroViewController") as IntroViewController
-        self.presentViewController(introViewController, animated: true, completion: nil) */
         self.performSegueWithIdentifier("showIntro", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "showHighscore") {
+            var svc = segue.destinationViewController as HighscoreViewController
+            svc.pool = self.pool!
+            svc.highscores = self.pool!.highscoreArray
+            //svc.delegate = self
+            //let row = self.tableView!.indexPathForSelectedRow()!.row
+            //svc.question = questions[row]
+        }
     }
     
     // MARK: - Table view data source

@@ -98,7 +98,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             
             tasksViewController.tableView!.reloadData()
             
-            println("didRangeBeacons");
+            //println("didRangeBeacons");
             var message:String = ""
             
             
@@ -132,7 +132,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             }
             
             NSLog("%@", message)
-            sendLocalNotificationWithMessage(message)
+            //sendLocalNotificationWithMessage(message)
     }
     
     func locationManager(manager: CLLocationManager!,
@@ -141,7 +141,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             manager.startUpdatingLocation()
             
             NSLog("You entered the region")
-            sendLocalNotificationWithMessage("You entered the region")
+            //sendLocalNotificationWithMessage("You entered the region")
     }
     
     func locationManager(manager: CLLocationManager!,
@@ -150,7 +150,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             manager.stopUpdatingLocation()
             
             NSLog("You exited the region")
-            sendLocalNotificationWithMessage("You exited the region")
+            //sendLocalNotificationWithMessage("You exited the region")
     }
 }
 

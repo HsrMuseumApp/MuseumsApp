@@ -11,11 +11,6 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if highscores.count == 0 {
-            getHighscoreData()
-            //tableView.reloadData()
-        }
-        
         tableView.dataSource = self
         
         
@@ -23,13 +18,6 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func getHighscoreData() {
-        //var pool : DataPool = DataPool()
-        pool.initializeDataPool()
-        highscores = pool.highscoreArray
     }
     
     func tableView(tableView: UITableView,
@@ -44,9 +32,6 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
             var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as UITableViewCell
             
             var score: Highscore = highscores[indexPath.row]
-            
-            //let question:Question = questions[indexPath.row]
-            //let beacon:CLBeacon? = getBeacon(question.beaconId)
             
             cell.textLabel!.text = score.playerName + ": " + score.score.description
             

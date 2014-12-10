@@ -1,6 +1,6 @@
 import Foundation
 
-class DataPool {
+class DataPool : NSObject, NSCoding {
     
     final var DB_SERVER = "http://152.96.56.11/group5/json/"
     final var QUESTIONS = "questions"
@@ -19,6 +19,32 @@ class DataPool {
     var highscoreArray = [Highscore]()
     var locationArray = [Location]()
     
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        
+        aCoder.encodeObject(tasks, forKey: "tasks")
+        aCoder.encodeObject(beacons, forKey: "beacons")
+        aCoder.encodeObject(items, forKey: "items")
+        aCoder.encodeObject(locations, forKey: "locations")
+        aCoder.encodeObject(highscores, forKey: "highscores")
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        tasks = aDecoder.decodeObjectForKey("tasks") as Dictionary<Int, Task>
+        taskArray = tasks.values.array
+        beacons = aDecoder.decodeObjectForKey("beacons") as Dictionary<String, Beacon>
+        items = aDecoder.decodeObjectForKey("items") as Dictionary<Int, Item>
+        locations = aDecoder.decodeObjectForKey("locations") as Dictionary<Int, Location>
+        locationArray = locations.values.array
+        highscores = aDecoder.decodeObjectForKey("highscores") as Dictionary<Int, Highscore>
+        highscoreArray = highscores.values.array
+
+    }
+    
+    override init() {
+        
+    }
+    
     func initializeDataPool() {
         getAllBeacons()
         getAllQuestions()
@@ -27,6 +53,16 @@ class DataPool {
         taskArray = tasks.values.array
         locationArray = locations.values.array
         highscoreArray = highscores.values.array
+        
+        let encodedPool = NSKeyedArchiver.archivedDataWithRootObject(self)
+        NSUserDefaults.standardUserDefaults().setObject(encodedPool, forKey: "pool")
+    }
+    
+    func loadFromSavedData() {
+        var pool = NSUserDefaults.standardUserDefaults().objectForKey("pool") as NSData
+
+        var dataPool = NSKeyedUnarchiver.unarchiveObjectWithData(pool) as DataPool
+        self.taskArray = dataPool.taskArray
     }
     
     func getAllQuestions() {
@@ -56,8 +92,8 @@ class DataPool {
             for var i = 0; i < beaconArray.count; ++i {
                 if let jsonBeacon = beaconArray[i] as? NSDictionary{
                     let beaconId = jsonBeacon["beaconId"] as? String
-                    let minor = jsonBeacon["minor"] as? NSNumber
-                    let major = jsonBeacon["major"] as? NSNumber
+                    let minor = jsonBeacon["minor"] as? Int
+                    let major = jsonBeacon["major"] as? Int
                     var beacon: Beacon = Beacon(id: beaconId!, minor: minor!, major: major!)
                     beacons[beaconId!] = beacon
                 }
