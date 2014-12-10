@@ -12,7 +12,7 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         
         tableView.dataSource = self
-        
+        highscores.sort({ $0.score > $1.score })
         
     }
     
@@ -28,13 +28,18 @@ class HighscoreViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             
+            var  cell:highscoreTableViewCell! = tableView.dequeueReusableCellWithIdentifier("highscoreTableViewCell") as? highscoreTableViewCell
             
-            var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as UITableViewCell
+            if (cell == nil)
+            {
+                let nib:Array = NSBundle.mainBundle().loadNibNamed("highscoreTableViewCell", owner: self, options: nil)
+                cell = nib[0] as? highscoreTableViewCell
+            }
             
             var score: Highscore = highscores[indexPath.row]
             
-            cell.textLabel!.text = score.playerName + ": " + score.score.description
-            
+            cell.name.text = score.playerName
+            cell.score.text = score.score.description
             
             return cell
     }

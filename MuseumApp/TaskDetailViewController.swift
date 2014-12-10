@@ -19,7 +19,6 @@ class TaskDetailViewController: UIViewController {
     
     @IBOutlet weak var btnSendAnswer: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         txtQuestion.text = task!.text
