@@ -27,6 +27,8 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.separatorStyle = .None
         tableView.rowHeight = 50.0
         tableView.backgroundColor = UIColor.blackColor()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveDataPool", name: "kSaveDataPoolNotification", object: nil);
 
     }
     
@@ -132,14 +134,19 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.performSegueWithIdentifier("showIntro", sender: self)
     }
     
+    func saveDataPool() {
+        if (pool != nil) {
+            let encodedPool = NSKeyedArchiver.archivedDataWithRootObject(pool!)
+            NSUserDefaults.standardUserDefaults().setObject(encodedPool, forKey: "pool")
+        }
+        
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "showHighscore") {
             var svc = segue.destinationViewController as HighscoreViewController
             svc.pool = self.pool!
             svc.highscores = self.pool!.highscoreArray
-            //svc.delegate = self
-            //let row = self.tableView!.indexPathForSelectedRow()!.row
-            //svc.question = questions[row]
         }
     }
     

@@ -49,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
+        NSNotificationCenter.defaultCenter().postNotificationName("kSaveDataPoolNotification", object: nil);
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
