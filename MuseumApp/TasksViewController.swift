@@ -55,9 +55,6 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         helpButton.setTitle("?", forState: UIControlState.Normal)
         helpButton.layer.frame = CGRect (x: CGRectGetWidth(self.view.bounds)-45, y: 5.0, width: 30.0, height: 30.0)
         helpButton.titleLabel?.font = UIFont(name: "Futura-CondensedExtraBold", size: 25)
-        //helpButton.layer.borderColor = UIColor.blueColor().CGColor
-        //helpButton.layer.cornerRadius = 0.5 * helpButton.bounds.size.width
-        //helpButton.layer.borderWidth = 3
         
         helpButton.addTarget(self, action: Selector("showHelp"), forControlEvents: UIControlEvents.TouchUpInside)
         cview.addSubview(helpButton)
@@ -77,8 +74,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cview.addSubview(button)
                 pos_x += 32.0
             }
-            
-            
+
         }
         
         if (pool?.highscores.count > 0) {
@@ -91,8 +87,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             scoreButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Fill
             scoreButton.addTarget(self, action: Selector("showHighScore"), forControlEvents: UIControlEvents.TouchUpInside)
             cview.addSubview(scoreButton)
-        }
-        
+        } 
  
         nav.titleView = cview
     }

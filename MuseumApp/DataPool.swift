@@ -84,10 +84,11 @@ class DataPool : NSObject, NSCoding {
                 if let jsonQuestion = questionArray[i] as? NSDictionary{
                     let id = jsonQuestion["id"] as? Int
                     let text = jsonQuestion["text"] as? String
+                    let desc = jsonQuestion["description"] as? String
                     let itemId = jsonQuestion["itemId"] as? Int
                     var answers: [Answer] = getAnswerFromQuestion(id!)
                     var beacons: [Beacon] = getBeaconsByItemId(itemId!)
-                    var task = Task(text: text!, id: id!, beacon: beacons[0], answers: answers)
+                    var task = Task(text: text!, id: id!, desc: desc!, beacon: beacons[0], answers: answers)
                     tasks[id!] = task
                 }
             }

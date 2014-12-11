@@ -3,6 +3,7 @@ import UIKit
 class Task: NSObject, NSCoding {
     
     var text: String
+    var desc: String
     var completed: Bool {
         didSet {
             var defaults = NSUserDefaults.standardUserDefaults()
@@ -27,8 +28,9 @@ class Task: NSObject, NSCoding {
     var isSelectable: Bool
     
     
-    init(text: String, id: Int, beacon: Beacon, answers: [Answer]) {
+    init(text: String, id: Int, desc: String, beacon: Beacon, answers: [Answer]) {
         self.text = text
+        self.desc = desc
         self.completed = false
         self.id = id
         self.beacon = beacon
@@ -38,6 +40,7 @@ class Task: NSObject, NSCoding {
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(text, forKey: "text")
+        aCoder.encodeObject(desc, forKey: "desc")
         aCoder.encodeBool(completed, forKey: "completed")
         aCoder.encodeInteger(id, forKey: "id")
         aCoder.encodeBool(isSelectable, forKey: "isSelectable")
@@ -47,6 +50,7 @@ class Task: NSObject, NSCoding {
     
     required init(coder aDecoder: NSCoder) {
         self.text = aDecoder.decodeObjectForKey("text") as String
+        self.desc = aDecoder.decodeObjectForKey("desc") as String
         self.completed = aDecoder.decodeBoolForKey("completed")
         self.id = aDecoder.decodeIntegerForKey("id")
         self.isSelectable = aDecoder.decodeBoolForKey("isSelectable")
