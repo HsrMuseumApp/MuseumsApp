@@ -1,11 +1,3 @@
-//
-//  NavigationToolbar.swift
-//  MuseumApp
-//
-//  Created by Hans Muster on 11/12/14.
-//  Copyright (c) 2014 HSR. All rights reserved.
-//
-
 import UIKit
 
 class NavigationToolbar : UIView {

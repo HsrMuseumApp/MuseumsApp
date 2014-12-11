@@ -12,43 +12,33 @@ class TableViewCell: UITableViewCell {
     var tickLabel: UILabel
     var questionLabel: UILabel
     var completeOnDragRelease = false
-    let label: StrikeThroughText
-    let taskCompleteLayer = CALayer()
+    let label : UILabel
+    var answerImageView : UIImageView = UIImageView()
     let taskSelectableLayer = CALayer()
     var delegate: TableViewCellDelegate?
     var task: Task? {
         didSet {
-            let labelstring = NSMutableAttributedString(string: task!.desc)
-            //label.text = task!.desc
-            //label.strikeThrough = task!.completed
+            label.text = task!.desc
             if(task!.completed) {
                 if(task!.isCorrect()) {
-                    var labelimage = NSTextAttachment()
-                    labelimage.image = UIImage(named: "Tick.png")
-                    let extendedstring = NSAttributedString(attachment: labelimage)
-                    labelstring.appendAttributedString(extendedstring)
+                    answerImageView.image = UIImage(named: "Tick.png");
                 } else {
-                    var labelimage = NSTextAttachment()
-                    labelimage.image = UIImage(named: "Error.png")
-                    let extendedstring = NSAttributedString(attachment: labelimage)
-                    labelstring.appendAttributedString(extendedstring)
+                    answerImageView.image = UIImage(named: "Error.png");
                 }
+            } else {
+                answerImageView.image = nil
             }
-            label.attributedText = labelstring
-            
-            if(task!.completed) {
-                    taskCompleteLayer.hidden = false
-            } else if(task!.isSelectable){
+            if(task!.isSelectable){
                 taskSelectableLayer.hidden = false
             } else {
                 taskSelectableLayer.hidden = true
             }
-        
             if(task?.answers.count > 0) {
                 addSubview(questionLabel)
             } else {
                 addSubview(tickLabel)
             }
+            
         }
     }
     let gradientLayer = CAGradientLayer()
@@ -59,7 +49,7 @@ class TableViewCell: UITableViewCell {
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        label = StrikeThroughText(frame: CGRect.nullRect)
+        label = UILabel(frame: CGRect.nullRect)
         label.textColor = UIColor.whiteColor()
         label.font = UIFont.boldSystemFontOfSize(16)
         label.backgroundColor = UIColor.clearColor()
@@ -84,7 +74,10 @@ class TableViewCell: UITableViewCell {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        answerImageView = UIImageView(frame: CGRectMake(CGRectGetWidth(bounds)-40, 10, 30, 30));
+    
         addSubview(label)
+        addSubview(answerImageView)
 
         
         selectionStyle = .None
@@ -99,15 +92,10 @@ class TableViewCell: UITableViewCell {
         gradientLayer.locations = [0.0, 0.01, 0.95, 1.0]
         layer.insertSublayer(gradientLayer, atIndex: 0)
         
-        taskCompleteLayer = CALayer(layer: layer)
-        taskCompleteLayer.backgroundColor = UIColor(red: 0.0, green: 0.6, blue: 0.0, alpha: 1.0).CGColor
-        taskCompleteLayer.hidden = true
-        
         taskSelectableLayer = CALayer(layer: layer)
         taskSelectableLayer.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.6, alpha: 1.0).CGColor
         taskSelectableLayer.hidden = true
-        
-        layer.insertSublayer(taskCompleteLayer, atIndex: 0)
+
         layer.insertSublayer(taskSelectableLayer, atIndex: 0)
         
         var recognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
@@ -121,7 +109,6 @@ class TableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = bounds
-        taskCompleteLayer.frame = bounds
         taskSelectableLayer.frame = bounds
         
         label.frame = CGRect(x: kLabelLeftMargin, y: 0, width: bounds.size.width - kLabelLeftMargin, height: bounds.size.height)
@@ -162,8 +149,6 @@ class TableViewCell: UITableViewCell {
                                 delegate!.taskAnswerQuestions(task!)
                             }
                         } else {
-                            label.strikeThrough = true
-                            taskCompleteLayer.hidden = false
                             task!.completed = true
                         }
                     //}

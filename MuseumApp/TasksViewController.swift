@@ -193,8 +193,11 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func resetUserDefaults(sender: AnyObject) {
-        for task in self.tasks {
-            task.completed = false
+        if let tasks = self.pool?.tasks {
+            for t in tasks.values {
+                t.completed = false
+                t.selectedAnswer = 0
+            }
         }
         tableView.reloadData()
         var defaults = NSUserDefaults.standardUserDefaults()

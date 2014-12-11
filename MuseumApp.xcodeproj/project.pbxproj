@@ -27,6 +27,7 @@
 		84E6DAC71A39BAC600509B04 /* Error.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E6DAC51A39BAC600509B04 /* Error.png */; };
 		84E6DAC81A39BAC600509B04 /* Tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E6DAC61A39BAC600509B04 /* Tick.png */; };
 		84E6DACA1A39C90B00509B04 /* NavigationToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6DAC91A39C90B00509B04 /* NavigationToolbar.swift */; };
+		84E6DACE1A39D52600509B04 /* TableViewCellUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6DACD1A39D52600509B04 /* TableViewCellUIView.swift */; };
 		A35C13041A2895EF00AA8F36 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004176ED1A1FAA27000838AC /* LaunchScreen.xib */; };
 		A35C13071A2898C000AA8F36 /* HighscoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C13061A2898C000AA8F36 /* HighscoreViewController.swift */; };
 		A35C13081A2898F000AA8F36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 004176E81A1FAA27000838AC /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 		84E6DAC51A39BAC600509B04 /* Error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Error.png; sourceTree = "<group>"; };
 		84E6DAC61A39BAC600509B04 /* Tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tick.png; sourceTree = "<group>"; };
 		84E6DAC91A39C90B00509B04 /* NavigationToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationToolbar.swift; sourceTree = "<group>"; };
+		84E6DACD1A39D52600509B04 /* TableViewCellUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellUIView.swift; sourceTree = "<group>"; };
 		A35C13061A2898C000AA8F36 /* HighscoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighscoreViewController.swift; sourceTree = "<group>"; };
 		A35F3B2D1A333668000BAA70 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A3EA66601A3876CA00998D08 /* highscoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = highscoreTableViewCell.xib; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				A3EA66601A3876CA00998D08 /* highscoreTableViewCell.xib */,
 				A3EA66621A38772D00998D08 /* highscoreTableViewCell.swift */,
 				84E6DAC91A39C90B00509B04 /* NavigationToolbar.swift */,
+				84E6DACD1A39D52600509B04 /* TableViewCellUIView.swift */,
 			);
 			name = UIElements;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				C4CE381D1A2EF0AB0029D07D /* IntroViewController.swift in Sources */,
 				004177101A1FDC21000838AC /* TaskDetailViewController.swift in Sources */,
 				A3EA66631A38772D00998D08 /* highscoreTableViewCell.swift in Sources */,
+				84E6DACE1A39D52600509B04 /* TableViewCellUIView.swift in Sources */,
 				004177121A1FE062000838AC /* Answer.swift in Sources */,
 				8468B91C1A21DD6800C9F7B9 /* HttpConnect.swift in Sources */,
 				8468B91E1A21DD8600C9F7B9 /* DataPool.swift in Sources */,
