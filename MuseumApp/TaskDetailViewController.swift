@@ -35,6 +35,10 @@ class TaskDetailViewController: UIViewController {
         
         btnArray = [self.btnAnswerOne, btnAnswerTwo, btnAnswerThree]
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        delegate?.getScoreFromDetail(score!)
+    }
 
 
     @IBAction func answerOnePressed(sender: AnyObject) {
@@ -52,10 +56,6 @@ class TaskDetailViewController: UIViewController {
         checkAnswer()
     }
     
-    @IBAction func closeView(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     func checkAnswer() {
         task?.completed = true
         
@@ -71,7 +71,7 @@ class TaskDetailViewController: UIViewController {
             score!++
             
         } else {
-            errorMessage.text = "Leider falsch, versuchs mit der nächsten Frage"
+            errorMessage.text = "Leider falsch, versuchs mit der nächsten Frage!"
             
             var btnSelected:UIButton = self.btnArray[selectedAnswer!]
             btnSelected.backgroundColor = UIColor.redColor()

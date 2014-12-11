@@ -11,6 +11,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     var pool:DataPool?
     var tasks = [Task]()
+    var task:Task?
     var locations = Dictionary<Int, Location>()
     var currentLocation = 1
     
@@ -55,6 +56,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         helpButton.setTitle("?", forState: UIControlState.Normal)
         helpButton.layer.frame = CGRect (x: CGRectGetWidth(self.view.bounds)-45, y: 5.0, width: 30.0, height: 30.0)
         helpButton.titleLabel?.font = UIFont(name: "Futura-CondensedExtraBold", size: 25)
+        
         helpButton.addTarget(self, action: Selector("showHelp"), forControlEvents: UIControlEvents.TouchUpInside)
         cview.addSubview(helpButton)
         
@@ -73,7 +75,9 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cview.addSubview(button)
                 pos_x += 32.0
             }
+
         }
+        
         if (pool?.highscores.count > 0) {
             var scoreButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
             var winnerpodium = UIImage(named:"winner-podium.png")
@@ -84,7 +88,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             scoreButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Fill
             scoreButton.addTarget(self, action: Selector("showHighScore"), forControlEvents: UIControlEvents.TouchUpInside)
             cview.addSubview(scoreButton)
-        }       
+        } 
  
         nav.titleView = cview
     }
@@ -123,6 +127,15 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             svc.pool = self.pool!
             svc.score = score
             svc.highscores = self.pool!.highscoreArray
+        } else if (segue.identifier == "showSubmitScore") {
+            var svc = segue.destinationViewController as SubmitScoreViewController
+            svc.score = score
+            svc.highscores = self.pool!.highscoreArray
+        } else if (segue.identifier == "showTaskDetail") {
+            var svc = segue.destinationViewController as TaskDetailViewController
+            svc.task = self.task
+            svc.score = score
+            svc.delegate = self
         }
     }
     
@@ -149,11 +162,8 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func taskAnswerQuestions(task: Task) {
-        let taskDetailViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TaskDetailViewController") as TaskDetailViewController
-        taskDetailViewController.task = task
-        taskDetailViewController.score = score
-        taskDetailViewController.delegate = self
-        self.presentViewController(taskDetailViewController, animated: true, completion: nil)
+        self.task = task
+        self.performSegueWithIdentifier("showTaskDetail", sender: self)
     }
     
     // Mark: - Table view delegate
@@ -195,6 +205,17 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func getScoreFromDetail(score: Int) {
         self.score = score
+        submitScoreIfCompleted()
+    }
+    
+    func submitScoreIfCompleted() {
+        for task in pool!.taskArray {
+            if (!task.completed) {
+                return
+            }
+        }
+        self.performSegueWithIdentifier("showSubmitScore", sender: self)
+        
     }
 
 }
