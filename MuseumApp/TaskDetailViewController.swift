@@ -22,26 +22,29 @@ class TaskDetailViewController: UIViewController {
     var delegate:getScoreFromDetailDeleagte?
     
     var btnArray:[UIButton] = []
+    var txtArray:[UILabel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         txtQuestion.text = task!.text
+        btnArray = [btnAnswerOne, btnAnswerTwo, btnAnswerThree]
+        txtArray = [txtAnswerOne, txtAnswerTwo, txtAnswerThree]
         
-        txtAnswerOne.text = task!.answers[0].text
-        txtAnswerTwo.text = task!.answers[1].text
-        txtAnswerThree.text = task!.answers[2].text
-
-        errorMessage.text = ""
+        for var i = 0; i < task!.answers.count; i++ {
+            txtArray[i].text = task!.answers[i].text
+            txtArray[i].lineBreakMode = NSLineBreakMode.ByWordWrapping
+            txtArray[i].numberOfLines = 0;
+        }
         
-        btnArray = [self.btnAnswerOne, btnAnswerTwo, btnAnswerThree]
+        errorMessage.text = ""       
         
         if(task!.completed) {
             for btn in btnArray {
                 btn.enabled = false
             }
-            for var i = 0; i < task!.answers.count; ++i {
-                if(task!.answers[i].id == task?.selectedAnswer) {
-                    self.selectedAnswer = i
+            for var j = 0; j < task!.answers.count; j++ {
+                if(task!.answers[j].id == task?.selectedAnswer) {
+                    self.selectedAnswer = j
                 }
             }
             if(task!.isCorrect()){

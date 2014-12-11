@@ -47,49 +47,6 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     
     func initNavigationToolbarRooms() {
-            
-//        var cview = UIView()
-//        cview.frame = CGRect(x: 0.0, y: 0.0, width: CGRectGetWidth(self.view.bounds) , height: 40)
-//        var pos_x = 0.0
-//        
-//        var helpButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
-//        helpButton.setTitle("?", forState: UIControlState.Normal)
-//        helpButton.layer.frame = CGRect (x: CGRectGetWidth(self.view.bounds)-45, y: 5.0, width: 30.0, height: 30.0)
-//        helpButton.titleLabel?.font = UIFont(name: "Futura-CondensedExtraBold", size: 25)
-//        
-//        helpButton.addTarget(self, action: Selector("showHelp"), forControlEvents: UIControlEvents.TouchUpInside)
-//        cview.addSubview(helpButton)
-//        
-//        if (tasks.count > 0) {
-//            for index in Array(locations.keys).sorted(<) {
-//                var loc = locations[index]!
-//                var button = UIButton.buttonWithType(UIButtonType.System) as UIButton
-//                button.tag = loc.id
-//
-//                button.setTitle(String(loc.id), forState: UIControlState.Normal)
-//                
-//                button.frame = CGRect(x: pos_x , y: 5.0, width: 35, height: 35)
-//                button.titleLabel?.font = UIFont(name: "Futura-CondensedExtraBold", size: 25)
-//                
-//                button.addTarget(self, action: Selector("changeTableContentForLocation:"), forControlEvents: UIControlEvents.TouchUpInside)
-//                cview.addSubview(button)
-//                pos_x += 32.0
-//            }
-//
-//        }
-//        
-//        if (pool?.highscores.count > 0) {
-//            var scoreButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
-//            var winnerpodium = UIImage(named:"winner-podium.png")
-//            
-//            scoreButton.layer.frame = CGRect (x: CGRectGetWidth(self.view.bounds)-105, y: 2.0, width: 40.0, height: 40.0)
-//            scoreButton.setImage(winnerpodium, forState: UIControlState.Normal)
-//            scoreButton.contentVerticalAlignment = UIControlContentVerticalAlignment.Fill
-//            scoreButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Fill
-//            scoreButton.addTarget(self, action: Selector("showHighScore"), forControlEvents: UIControlEvents.TouchUpInside)
-//            cview.addSubview(scoreButton)
-//        } 
- 
         nav.titleView = NavigationToolbar(bounds: CGRectGetWidth(self.view.bounds), pool: pool!, controller: self)
     }
     
