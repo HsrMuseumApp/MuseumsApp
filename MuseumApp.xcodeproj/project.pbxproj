@@ -14,7 +14,6 @@
 		004177071A1FAF7E000838AC /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004177061A1FAF7E000838AC /* Beacon.swift */; };
 		0041770A1A1FAFC7000838AC /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004177091A1FAFC7000838AC /* Task.swift */; };
 		0041770C1A1FB3EA000838AC /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0041770B1A1FB3EA000838AC /* TableViewCell.swift */; };
-		0041770E1A1FC89B000838AC /* StrikeThroughText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0041770D1A1FC89B000838AC /* StrikeThroughText.swift */; };
 		004177101A1FDC21000838AC /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0041770F1A1FDC21000838AC /* TaskDetailViewController.swift */; };
 		004177121A1FE062000838AC /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004177111A1FE062000838AC /* Answer.swift */; };
 		0054F28A1A2068D600FF8E40 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0054F2891A2068D600FF8E40 /* CoreLocation.framework */; };
@@ -61,7 +60,6 @@
 		004177061A1FAF7E000838AC /* Beacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
 		004177091A1FAFC7000838AC /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		0041770B1A1FB3EA000838AC /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		0041770D1A1FC89B000838AC /* StrikeThroughText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrikeThroughText.swift; sourceTree = "<group>"; };
 		0041770F1A1FDC21000838AC /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		004177111A1FE062000838AC /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		0054F2891A2068D600FF8E40 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -181,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				0041770B1A1FB3EA000838AC /* TableViewCell.swift */,
-				0041770D1A1FC89B000838AC /* StrikeThroughText.swift */,
 				A3EA66601A3876CA00998D08 /* highscoreTableViewCell.xib */,
 				A3EA66621A38772D00998D08 /* highscoreTableViewCell.swift */,
 				84E6DAC91A39C90B00509B04 /* NavigationToolbar.swift */,
@@ -340,7 +337,6 @@
 				0041770A1A1FAFC7000838AC /* Task.swift in Sources */,
 				8401F6BB1A221B2600E1D10A /* Item.swift in Sources */,
 				A3EAFDF51A39BCB100FBCA7D /* SubmitScoreViewController.swift in Sources */,
-				0041770E1A1FC89B000838AC /* StrikeThroughText.swift in Sources */,
 				004176E71A1FAA27000838AC /* TasksViewController.swift in Sources */,
 				004176E51A1FAA27000838AC /* AppDelegate.swift in Sources */,
 				844CA1A21A2743910026B26D /* Location.swift in Sources */,

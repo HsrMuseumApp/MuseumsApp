@@ -9,9 +9,6 @@ protocol TableViewCellDelegate {
 class TableViewCell: UITableViewCell {
 
     var originalCenter = CGPoint()
-    var tickLabel: UILabel
-    var questionLabel: UILabel
-    var completeOnDragRelease = false
     let label : UILabel
     var answerImageView : UIImageView = UIImageView()
     let taskSelectableLayer = CALayer()
@@ -33,12 +30,6 @@ class TableViewCell: UITableViewCell {
             } else {
                 taskSelectableLayer.hidden = true
             }
-            if(task?.answers.count > 0) {
-                addSubview(questionLabel)
-            } else {
-                addSubview(tickLabel)
-            }
-            
         }
     }
     let gradientLayer = CAGradientLayer()
@@ -63,14 +54,6 @@ class TableViewCell: UITableViewCell {
             return label
         }
         
-        // tick and question labels for context cues
-        tickLabel = createCueLabel()
-        tickLabel.text = "\u{2713}"
-        tickLabel.textAlignment = .Right
-        
-        questionLabel = createCueLabel()
-        questionLabel.text = "?"
-        questionLabel.textAlignment = .Right
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -78,7 +61,6 @@ class TableViewCell: UITableViewCell {
     
         addSubview(label)
         addSubview(answerImageView)
-
         
         selectionStyle = .None
         
@@ -97,73 +79,30 @@ class TableViewCell: UITableViewCell {
         taskSelectableLayer.hidden = true
 
         layer.insertSublayer(taskSelectableLayer, atIndex: 0)
-        
-        var recognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
-        recognizer.delegate = self
-        addGestureRecognizer(recognizer)
+
+        var recognizer = UITapGestureRecognizer(target:self, action: Selector("handleTap"))
+        self.addGestureRecognizer(recognizer)
     }
     
     let kLabelLeftMargin: CGFloat = 15.0
     let kUICuesMargin: CGFloat = 10.0
     let kUICuesWidth: CGFloat = 50.0
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = bounds
         taskSelectableLayer.frame = bounds
-        
         label.frame = CGRect(x: kLabelLeftMargin, y: 0, width: bounds.size.width - kLabelLeftMargin, height: bounds.size.height)
-        
-        tickLabel.frame = CGRect(x: -kUICuesWidth - kUICuesMargin, y: 0, width: kUICuesWidth, height: bounds.size.height)
-        questionLabel.frame = CGRect(x: -kUICuesWidth - kUICuesMargin, y: 0, width: kUICuesWidth, height: bounds.size.height)
     }
     
-    //MARK: - horizontal pan gesture methods
-    func handlePan(recognizer: UIPanGestureRecognizer) {
-
-        if recognizer.state == .Began {
-            originalCenter = center
-        }
-
-        if recognizer.state == .Changed {
-            let translation = recognizer.translationInView(self)
-            center = CGPointMake(originalCenter.x + translation.x, originalCenter.y)
-            completeOnDragRelease = frame.origin.x > frame.size.width / 2.0
-            
-            // fade the contextual clues
-            let cueAlpha = fabs(frame.origin.x) / (frame.size.width / 2.0)
-            tickLabel.alpha = cueAlpha
-            questionLabel.alpha = cueAlpha
-            // indicate when the user has pulled the item far enough to invoke the given action
-            tickLabel.textColor = completeOnDragRelease ? UIColor.greenColor() : UIColor.whiteColor()
-            questionLabel.textColor = completeOnDragRelease ? UIColor.yellowColor() : UIColor.whiteColor()
-        }
-
-        if recognizer.state == .Ended {
-            let originalFrame = CGRect(x: 0, y: frame.origin.y,
-                width: bounds.size.width, height: bounds.size.height)
-            if completeOnDragRelease {
-                if task != nil {
-                    //if(task!.isSelectable) {
-                        if(task!.answers.count > 0) {
-                            delegate!.taskAnswerQuestions(task!)
-                        }
-                    //}
-                    UIView.animateWithDuration(0.2, animations: {self.frame = originalFrame})
+ 
+    func handleTap() {
+        if task != nil {
+            //if(task!.isSelectable) { //TODO Enterfernen für BEACONS
+                if(task!.answers.count > 0) {
+                    delegate!.taskAnswerQuestions(task!)
                 }
-            } else {
-                UIView.animateWithDuration(0.2, animations: {self.frame = originalFrame})
-            }
+            //}
         }
-    }
-    
-    override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if let panGestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
-            let translation = panGestureRecognizer.translationInView(superview!)
-            if fabs(translation.x) > fabs(translation.y) {
-                return true
-            }
-            return false
-        }
-        return false
     }
 }
