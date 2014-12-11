@@ -9,6 +9,7 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
     
     var peripheralManager : CBPeripheralManager?
 
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,7 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
                 
                 tasksViewController.initNavigationToolbarRooms()
             }
+            activityIndicatorView.stopAnimating()
             
         }
         
@@ -83,6 +85,7 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
                 handler: nil))
             presentViewController(controller, animated: true, completion: nil)
         } else {
+            activityIndicatorView.startAnimating()
             loadAllData()
             self.navigationController!.popViewControllerAnimated(true)
         }
@@ -101,6 +104,7 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
         if (isConnectedToNetwork()) {
             btnLoadData.hidden = true
             loadAllData()
+            activityIndicatorView.stopAnimating()
         }
     }
     
