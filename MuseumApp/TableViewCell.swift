@@ -145,11 +145,7 @@ class TableViewCell: UITableViewCell {
                 if task != nil {
                     //if(task!.isSelectable) {
                         if(task!.answers.count > 0) {
-                            if(!task!.completed) {
-                                delegate!.taskAnswerQuestions(task!)
-                            }
-                        } else {
-                            task!.completed = true
+                            delegate!.taskAnswerQuestions(task!)
                         }
                     //}
                     UIView.animateWithDuration(0.2, animations: {self.frame = originalFrame})

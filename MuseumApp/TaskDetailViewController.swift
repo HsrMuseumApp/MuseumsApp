@@ -34,6 +34,22 @@ class TaskDetailViewController: UIViewController {
         errorMessage.text = ""
         
         btnArray = [self.btnAnswerOne, btnAnswerTwo, btnAnswerThree]
+        
+        if(task!.completed) {
+            for btn in btnArray {
+                btn.enabled = false
+            }
+            for var i = 0; i < task!.answers.count; ++i {
+                if(task!.answers[i].id == task?.selectedAnswer) {
+                    self.selectedAnswer = i
+                }
+            }
+            if(task!.isCorrect()){
+                setAnswerCorrect()
+            } else {
+                setAnswerIncorrect()
+            }
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -64,33 +80,39 @@ class TaskDetailViewController: UIViewController {
         }
         
         if(task!.answers[self.selectedAnswer!].correct) {
-            
-            var btnSelected:UIButton = self.btnArray[selectedAnswer!]
-            btnSelected.backgroundColor = UIColor.greenColor()
-            errorMessage.text = "Korrekt, weiter gehts!"
+            setAnswerCorrect()
             score!++
             
         } else {
-            errorMessage.text = "Leider falsch, versuchs mit der nächsten Frage!"
-            
-            var btnSelected:UIButton = self.btnArray[selectedAnswer!]
-            btnSelected.backgroundColor = UIColor.redColor()
-            
-            var i = 0
-            for answer in task!.answers {
-                if answer.correct {
-                    var btnCorrect:UIButton = self.btnArray[i]
-                    btnCorrect.backgroundColor = UIColor.greenColor()
-                }
-                i++
-            }
-            
+            setAnswerIncorrect()
             if (score > 0) {
                 score!--
             }
         }
         task?.selectedAnswer = task!.answers[self.selectedAnswer!].id
         delegate?.getScoreFromDetail(score!)
+    }
+    
+    func setAnswerCorrect() {
+        var btnSelected:UIButton = self.btnArray[selectedAnswer!]
+        btnSelected.backgroundColor = UIColor.greenColor()
+        errorMessage.text = "Korrekt, weiter gehts!"
+    }
+    
+    func setAnswerIncorrect() {
+        errorMessage.text = "Leider falsch, versuchs mit der nächsten Frage!"
+        
+        var btnSelected:UIButton = self.btnArray[selectedAnswer!]
+        btnSelected.backgroundColor = UIColor.redColor()
+        
+        var i = 0
+        for answer in task!.answers {
+            if answer.correct {
+                var btnCorrect:UIButton = self.btnArray[i]
+                btnCorrect.backgroundColor = UIColor.greenColor()
+            }
+            i++
+        }
     }
     
 }
