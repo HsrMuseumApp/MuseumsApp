@@ -18,22 +18,24 @@ class TableViewCell: UITableViewCell {
     var delegate: TableViewCellDelegate?
     var task: Task? {
         didSet {
-            label.text = task!.desc
+            let labelstring = NSMutableAttributedString(string: task!.desc)
+            //label.text = task!.desc
             //label.strikeThrough = task!.completed
             if(task!.completed) {
                 if(task!.isCorrect()) {
-                    var x = NSTextAttachment()
-                    x.image = UIImage(named: "Tick.png")
-                    let str = NSAttributedString(attachment: x)
-                    //label.te
-                    //label.attributedText = str
+                    var labelimage = NSTextAttachment()
+                    labelimage.image = UIImage(named: "Tick.png")
+                    let extendedstring = NSAttributedString(attachment: labelimage)
+                    labelstring.appendAttributedString(extendedstring)
                 } else {
-                    var x = NSTextAttachment()
-                    x.image = UIImage(named: "Error.png")
-                    let str = NSAttributedString(attachment: x)
-                    label.attributedText = str
+                    var labelimage = NSTextAttachment()
+                    labelimage.image = UIImage(named: "Error.png")
+                    let extendedstring = NSAttributedString(attachment: labelimage)
+                    labelstring.appendAttributedString(extendedstring)
                 }
             }
+            label.attributedText = labelstring
+            
             if(task!.completed) {
                     taskCompleteLayer.hidden = false
             } else if(task!.isSelectable){
