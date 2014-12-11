@@ -11,6 +11,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     var pool:DataPool?
     var tasks = [Task]()
+    var task:Task?
     var locations = Dictionary<Int, Location>()
     var currentLocation = 1
     
@@ -130,6 +131,11 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             var svc = segue.destinationViewController as SubmitScoreViewController
             svc.score = score
             svc.highscores = self.pool!.highscoreArray
+        } else if (segue.identifier == "showTaskDetail") {
+            var svc = segue.destinationViewController as TaskDetailViewController
+            svc.task = self.task
+            svc.score = score
+            svc.delegate = self
         }
     }
     
@@ -156,11 +162,8 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func taskAnswerQuestions(task: Task) {
-        let taskDetailViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TaskDetailViewController") as TaskDetailViewController
-        taskDetailViewController.task = task
-        taskDetailViewController.score = score
-        taskDetailViewController.delegate = self
-        self.presentViewController(taskDetailViewController, animated: true, completion: nil)
+        self.task = task
+        self.performSegueWithIdentifier("showTaskDetail", sender: self)
     }
     
     // Mark: - Table view delegate

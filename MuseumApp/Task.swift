@@ -56,15 +56,6 @@ class Task: NSObject, NSCoding {
         self.isSelectable = aDecoder.decodeBoolForKey("isSelectable")
         self.beacon = aDecoder.decodeObjectForKey("beacon") as Beacon
         self.answers = aDecoder.decodeObjectForKey("answers") as [Answer]
-        //var encodedBeacon = aDecoder.decodeObjectForKey("beacon") as NSData
-        //self.beacon = NSKeyedUnarchiver.unarchiveObjectWithData(encodedBeacon) as Beacon
-        
-        //var encodedAnswerArray = aDecoder.decodeObjectForKey("answers") as [NSData]
-        //self.answers = [Answer]()
-        //for encodedAnswer in encodedAnswerArray {
-        //    var answer = NSKeyedUnarchiver.unarchiveObjectWithData(encodedAnswer) as Answer
-        //    answers.append(answer)
-        //}
     }
    
 }
