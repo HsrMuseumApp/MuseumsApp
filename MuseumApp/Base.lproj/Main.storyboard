@@ -163,14 +163,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qS-ck-8BE">
-                                <rect key="frame" x="16" y="77" width="568" height="460"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, q</string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8su-RZ-GTI">
                                 <rect key="frame" x="106" y="475" width="109" height="30"/>
                                 <state key="normal" title="Lade Daten">
@@ -184,14 +176,46 @@
                                 <rect key="frame" x="142" y="265" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="nm_sg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qR0-4o-cKp">
+                                <rect key="frame" x="16" y="100" width="307" height="121"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Jaj-lT-JyW"/>
+                                    <constraint firstAttribute="width" constant="220" id="mQ6-7f-aq7"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Help.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="ERg-JJ-1iV">
+                                <rect key="frame" x="92" y="423" width="339" height="107"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="PBd-zd-f4y"/>
+                                    <constraint firstAttribute="height" constant="90" id="bQO-fc-SeH"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" misplaced="YES" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qS-ck-8BE">
+                                <rect key="frame" x="16" y="310" width="469" height="177"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Willkommen zum Quiz des Naturmuseums St.Gallen. Die Fragen sind nur aktiv, wenn Sie sich in der Nähe des dazu passenden Gegenstandes befinden. In jedem Museumsraum gibt es verschiedene Fragen. Ändern Ihre aktuelle Raumnummer mit den Ziffern in der Navigationsleiste oben links. Wenn Sie alle Fragen beantwortet haben können Sie sich in den Highscore eintragen. Falsche Fragen geben einen Minuspunkt, Richtige einen Pluspunkt</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3W-yr-Ly3">
+                                <rect key="frame" x="62" y="269" width="72" height="33"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="NeuSTART"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="C3W-yr-Ly3" firstAttribute="centerX" secondItem="qR0-4o-cKp" secondAttribute="centerX" id="0kM-AI-qJe"/>
+                            <constraint firstItem="C3W-yr-Ly3" firstAttribute="top" secondItem="qR0-4o-cKp" secondAttribute="bottom" constant="12" id="58M-jo-8Ag"/>
+                            <constraint firstItem="5qS-ck-8BE" firstAttribute="top" secondItem="C3W-yr-Ly3" secondAttribute="bottom" constant="12" id="B6E-PW-p7h"/>
+                            <constraint firstItem="5qS-ck-8BE" firstAttribute="centerX" secondItem="ERg-JJ-1iV" secondAttribute="centerX" id="EhZ-bT-m5a"/>
                             <constraint firstAttribute="centerX" secondItem="8su-RZ-GTI" secondAttribute="centerX" id="LvN-h7-Kr4"/>
                             <constraint firstItem="5qS-ck-8BE" firstAttribute="trailing" secondItem="3U5-5B-XTy" secondAttribute="trailingMargin" id="Nwx-Uz-YFz"/>
                             <constraint firstItem="5qS-ck-8BE" firstAttribute="leading" secondItem="3U5-5B-XTy" secondAttribute="leadingMargin" id="QwR-6l-lYh"/>
-                            <constraint firstItem="11r-Bv-9Ud" firstAttribute="top" secondItem="5qS-ck-8BE" secondAttribute="bottom" constant="14" id="Rbp-i5-T9s"/>
-                            <constraint firstItem="5qS-ck-8BE" firstAttribute="top" secondItem="8uq-QJ-wgv" secondAttribute="bottom" constant="13" id="zsX-eb-Tgl"/>
+                            <constraint firstItem="11r-Bv-9Ud" firstAttribute="top" secondItem="ERg-JJ-1iV" secondAttribute="bottom" constant="20" id="lJ9-r2-SXA"/>
+                            <constraint firstItem="qR0-4o-cKp" firstAttribute="top" secondItem="8uq-QJ-wgv" secondAttribute="bottom" constant="8" id="mWQ-uv-ED6"/>
+                            <constraint firstItem="5qS-ck-8BE" firstAttribute="centerX" secondItem="qR0-4o-cKp" secondAttribute="centerX" id="oAq-W5-JAd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fqa-Xg-8PR"/>
@@ -199,11 +223,12 @@
                         <outlet property="activityIndicatorView" destination="beH-C2-F9C" id="yZn-2Q-Dx2"/>
                         <outlet property="btnLoadData" destination="8su-RZ-GTI" id="BWa-Cg-phC"/>
                         <outlet property="introText" destination="5qS-ck-8BE" id="zLU-X9-TuW"/>
+                        <outlet property="reStart" destination="C3W-yr-Ly3" id="lnR-QL-RvQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QfY-wK-aoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="722.66666666666663" y="1840.3199999999999"/>
+            <point key="canvasLocation" x="436" y="1840"/>
         </scene>
         <!--Task Detail View Controller-->
         <scene sceneID="ZIZ-q4-ecQ">
@@ -366,7 +391,11 @@
             <point key="canvasLocation" x="682.13333333333333" y="350.26666666666665"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Help.JPG" width="1229" height="363"/>
+        <image name="nm_sg.jpg" width="460" height="160"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MPW-LI-opy"/>
+        <segue reference="D0C-Xp-zJR"/>
     </inferredMetricsTieBreakers>
 </document>

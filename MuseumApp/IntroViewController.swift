@@ -6,6 +6,7 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
     
     @IBOutlet weak var introText: UITextView!
     @IBOutlet weak var btnLoadData: UIButton!
+    @IBOutlet weak var reStart: UIButton!
     
     var peripheralManager : CBPeripheralManager?
 
@@ -16,6 +17,8 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
         btnLoadData.hidden = true
 
         var userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        reStart.addTarget(self, action: "restart", forControlEvents: UIControlEvents.TouchUpInside)
         
         if (!isConnectedToNetwork()) {
             
@@ -185,6 +188,10 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
             
         }
         
+    }
+    
+    func restart() {
+        println("restart")
     }
 
     
