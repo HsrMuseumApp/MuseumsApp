@@ -34,8 +34,8 @@ class StrikeThroughText: UILabel {
     
     let kStrikeOutThickness: CGFloat = 2.0
     func resizeStrikeThrough() {
-        let textSize = text!.sizeWithAttributes([NSFontAttributeName:font])
-        strikeThroughLayer.frame = CGRect(x: 0, y: bounds.size.height/2,
-            width: textSize.width, height: kStrikeOutThickness)
+        ////let textSize = text!.sizeWithAttributes([NSFontAttributeName:font])
+        //strikeThroughLayer.frame = CGRect(x: 0, y: bounds.size.height/2,
+           // width: textSize.width, height: kStrikeOutThickness)
     }
 }

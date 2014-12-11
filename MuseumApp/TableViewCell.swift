@@ -19,7 +19,21 @@ class TableViewCell: UITableViewCell {
     var task: Task? {
         didSet {
             label.text = task!.desc
-            label.strikeThrough = task!.completed
+            //label.strikeThrough = task!.completed
+            if(task!.completed) {
+                if(task!.isCorrect()) {
+                    var x = NSTextAttachment()
+                    x.image = UIImage(named: "Tick.png")
+                    let str = NSAttributedString(attachment: x)
+                    //label.te
+                    //label.attributedText = str
+                } else {
+                    var x = NSTextAttachment()
+                    x.image = UIImage(named: "Error.png")
+                    let str = NSAttributedString(attachment: x)
+                    label.attributedText = str
+                }
+            }
             if(task!.completed) {
                     taskCompleteLayer.hidden = false
             } else if(task!.isSelectable){

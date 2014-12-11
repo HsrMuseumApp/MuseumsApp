@@ -69,6 +69,7 @@ class TaskDetailViewController: UIViewController {
             btnSelected.backgroundColor = UIColor.greenColor()
             errorMessage.text = "Korrekt, weiter gehts!"
             score!++
+            
         } else {
             errorMessage.text = "Leider falsch, versuchs mit der nächsten Frage"
             
@@ -88,7 +89,7 @@ class TaskDetailViewController: UIViewController {
                 score!--
             }
         }
-        
+        task?.selectedAnswer = task!.answers[self.selectedAnswer!].id
         delegate?.getScoreFromDetail(score!)
     }
     

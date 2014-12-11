@@ -4,6 +4,7 @@ class Task: NSObject, NSCoding {
     
     var text: String
     var desc: String
+    var selectedAnswer: Int
     var completed: Bool {
         didSet {
             var defaults = NSUserDefaults.standardUserDefaults()
@@ -36,6 +37,7 @@ class Task: NSObject, NSCoding {
         self.beacon = beacon
         self.answers = answers
         self.isSelectable = false
+        self.selectedAnswer = 0
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -46,11 +48,13 @@ class Task: NSObject, NSCoding {
         aCoder.encodeBool(isSelectable, forKey: "isSelectable")
         aCoder.encodeObject(beacon, forKey: "beacon")
         aCoder.encodeObject(answers, forKey: "answers")
+        aCoder.encodeObject(selectedAnswer, forKey: "selectedAnswer")
     }
     
     required init(coder aDecoder: NSCoder) {
         self.text = aDecoder.decodeObjectForKey("text") as String
         self.desc = aDecoder.decodeObjectForKey("desc") as String
+        self.selectedAnswer = aDecoder.decodeObjectForKey("selectedAnswer") as Int
         self.completed = aDecoder.decodeBoolForKey("completed")
         self.id = aDecoder.decodeIntegerForKey("id")
         self.isSelectable = aDecoder.decodeBoolForKey("isSelectable")
@@ -65,6 +69,18 @@ class Task: NSObject, NSCoding {
         //    var answer = NSKeyedUnarchiver.unarchiveObjectWithData(encodedAnswer) as Answer
         //    answers.append(answer)
         //}
+    }
+    
+    func isCorrect() -> Bool {
+        var isCorrect = false;
+        if(selectedAnswer != 0) {
+            for answer in answers {
+                if(answer.correct) {
+                    return answer.id == selectedAnswer
+                }
+            }
+        }
+        return isCorrect
     }
    
 }

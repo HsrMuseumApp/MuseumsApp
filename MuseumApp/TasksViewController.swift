@@ -141,7 +141,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.selectionStyle = .None
 
         let task = tasks[indexPath.row]
-        
+
         cell.delegate = self
         cell.task = task
         
