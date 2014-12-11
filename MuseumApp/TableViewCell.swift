@@ -18,7 +18,7 @@ class TableViewCell: UITableViewCell {
     var delegate: TableViewCellDelegate?
     var task: Task? {
         didSet {
-            label.text = task!.text
+            label.text = task!.desc
             label.strikeThrough = task!.completed
             if(task!.completed) {
                     taskCompleteLayer.hidden = false
