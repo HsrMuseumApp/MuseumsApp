@@ -49,14 +49,16 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         var cview = UIView()
         cview.frame = CGRect(x: 0.0, y: 0.0, width: CGRectGetWidth(self.view.bounds) , height: 40)
-        var pos_x = 10.0
+        var pos_x = 0.0
         
         var helpButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
         helpButton.setTitle("?", forState: UIControlState.Normal)
-        helpButton.layer.frame = CGRect (x: CGRectGetWidth(self.view.bounds)-40, y: 5.0, width: 20.0, height: 20.0)
-        helpButton.layer.borderColor = UIColor.blackColor().CGColor
-        helpButton.layer.cornerRadius = 0.5 * helpButton.bounds.size.width
-        helpButton.layer.borderWidth = 0.5
+        helpButton.layer.frame = CGRect (x: CGRectGetWidth(self.view.bounds)-45, y: 5.0, width: 30.0, height: 30.0)
+        helpButton.titleLabel?.font = UIFont(name: "Futura-CondensedExtraBold", size: 25)
+        //helpButton.layer.borderColor = UIColor.blueColor().CGColor
+        //helpButton.layer.cornerRadius = 0.5 * helpButton.bounds.size.width
+        //helpButton.layer.borderWidth = 3
+        
         helpButton.addTarget(self, action: Selector("showHelp"), forControlEvents: UIControlEvents.TouchUpInside)
         cview.addSubview(helpButton)
         
@@ -68,15 +70,12 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
 
                 button.setTitle(String(loc.id), forState: UIControlState.Normal)
                 
-                button.frame = CGRect(x: pos_x , y: 5.0, width: 20, height: 20)
-                button.layer.borderColor = UIColor.blackColor().CGColor
-                button.layer.cornerRadius = 0.5 * button.bounds.size.width
-                button.layer.borderWidth = 0.5
-                button.layer.frame = CGRect (x: pos_x, y: 5.0, width: 20.0, height: 20.0)
+                button.frame = CGRect(x: pos_x , y: 5.0, width: 35, height: 35)
+                button.titleLabel?.font = UIFont(name: "Futura-CondensedExtraBold", size: 25)
                 
                 button.addTarget(self, action: Selector("changeTableContentForLocation:"), forControlEvents: UIControlEvents.TouchUpInside)
                 cview.addSubview(button)
-                pos_x += 25.0
+                pos_x += 32.0
             }
             
             
@@ -85,11 +84,11 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         if (pool?.highscores.count > 0) {
             var scoreButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
             var winnerpodium = UIImage(named:"winner-podium.png")
+            
+            scoreButton.layer.frame = CGRect (x: CGRectGetWidth(self.view.bounds)-105, y: 2.0, width: 40.0, height: 40.0)
             scoreButton.setImage(winnerpodium, forState: UIControlState.Normal)
-            scoreButton.layer.frame = CGRect (x: CGRectGetWidth(self.view.bounds)-80, y: 5.0, width: 20.0, height: 20.0)
-            scoreButton.layer.borderColor = UIColor.blackColor().CGColor
-            scoreButton.layer.cornerRadius = 0.5 * helpButton.bounds.size.width
-            scoreButton.layer.borderWidth = 0.5
+            scoreButton.contentVerticalAlignment = UIControlContentVerticalAlignment.Fill
+            scoreButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Fill
             scoreButton.addTarget(self, action: Selector("showHighScore"), forControlEvents: UIControlEvents.TouchUpInside)
             cview.addSubview(scoreButton)
         }
