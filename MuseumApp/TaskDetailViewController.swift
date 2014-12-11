@@ -53,6 +53,7 @@ class TaskDetailViewController: UIViewController {
     }
     
     @IBAction func closeView(sender: AnyObject) {
+        delegate?.getScoreFromDetail(score!)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -89,7 +90,6 @@ class TaskDetailViewController: UIViewController {
             }
         }
         
-        delegate?.getScoreFromDetail(score!)
     }
     
 }

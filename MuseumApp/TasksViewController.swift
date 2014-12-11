@@ -131,6 +131,10 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
             svc.pool = self.pool!
             svc.score = score
             svc.highscores = self.pool!.highscoreArray
+        } else if (segue.identifier == "showSubmitScore") {
+            var svc = segue.destinationViewController as SubmitScoreViewController
+            svc.score = score
+            svc.highscores = self.pool!.highscoreArray
         }
     }
     
@@ -203,6 +207,17 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func getScoreFromDetail(score: Int) {
         self.score = score
+        submitScoreIfCompleted()
+    }
+    
+    func submitScoreIfCompleted() {
+        for task in pool!.taskArray {
+            if (!task.completed) {
+                return
+            }
+        }
+        self.performSegueWithIdentifier("showSubmitScore", sender: self)
+        
     }
 
 }
