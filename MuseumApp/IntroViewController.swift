@@ -18,7 +18,6 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
 
         var userDefaults = NSUserDefaults.standardUserDefaults()
         
-        reStart.addTarget(self, action: "restart", forControlEvents: UIControlEvents.TouchUpInside)
         
         if (!isConnectedToNetwork()) {
             
@@ -94,6 +93,13 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
         }
     }
     
+    @IBAction func btnRestartPressed(sender: AnyObject) {
+        let rootViewController = self.navigationController
+        let tasksViewController:TasksViewController = rootViewController!.viewControllers[0] as TasksViewController
+        tasksViewController.resetUserDefaults(self)
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
     @IBAction func closeView(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -104,10 +110,13 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if (isConnectedToNetwork()) {
+        let tasksViewController:TasksViewController = self.navigationController!.viewControllers[0] as TasksViewController
+        if (isConnectedToNetwork() && tasksViewController.pool == nil) {
             btnLoadData.hidden = true
             loadAllData()
-            activityIndicatorView.stopAnimating()
+        }
+        if (tasksViewController.pool!.hasAnsweredQuestions()) {
+            reStart.titleLabel?.text = "Start"
         }
     }
     
@@ -189,11 +198,5 @@ class IntroViewController: UIViewController, CBPeripheralManagerDelegate {
         }
         
     }
-    
-    func restart() {
-        println("restart")
-    }
-
-    
 }
 

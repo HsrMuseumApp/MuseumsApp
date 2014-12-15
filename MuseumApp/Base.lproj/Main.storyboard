@@ -198,17 +198,22 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3W-yr-Ly3">
+                            <button contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3W-yr-Ly3">
                                 <rect key="frame" x="62" y="269" width="72" height="33"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                <state key="normal" title="NeuSTART"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="NeuSTART">
+                                    <color key="titleColor" red="0.088235514690000003" green="0.62550951089999995" blue="0.27337575079999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnRestartPressed:" destination="d7m-gf-hEB" eventType="touchUpInside" id="ekS-uN-nKf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="C3W-yr-Ly3" firstAttribute="centerX" secondItem="qR0-4o-cKp" secondAttribute="centerX" id="0kM-AI-qJe"/>
-                            <constraint firstItem="C3W-yr-Ly3" firstAttribute="top" secondItem="qR0-4o-cKp" secondAttribute="bottom" constant="12" id="58M-jo-8Ag"/>
-                            <constraint firstItem="5qS-ck-8BE" firstAttribute="top" secondItem="C3W-yr-Ly3" secondAttribute="bottom" constant="12" id="B6E-PW-p7h"/>
+                            <constraint firstItem="C3W-yr-Ly3" firstAttribute="top" secondItem="qR0-4o-cKp" secondAttribute="bottom" constant="15" id="58M-jo-8Ag"/>
+                            <constraint firstItem="5qS-ck-8BE" firstAttribute="top" secondItem="C3W-yr-Ly3" secondAttribute="bottom" constant="10" id="B6E-PW-p7h"/>
                             <constraint firstItem="5qS-ck-8BE" firstAttribute="centerX" secondItem="ERg-JJ-1iV" secondAttribute="centerX" id="EhZ-bT-m5a"/>
                             <constraint firstAttribute="centerX" secondItem="8su-RZ-GTI" secondAttribute="centerX" id="LvN-h7-Kr4"/>
                             <constraint firstItem="5qS-ck-8BE" firstAttribute="trailing" secondItem="3U5-5B-XTy" secondAttribute="trailingMargin" id="Nwx-Uz-YFz"/>

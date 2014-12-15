@@ -75,9 +75,7 @@ class TaskDetailViewController: UIViewController {
         checkAnswer()
     }
     
-    func checkAnswer() {
-        task?.completed = true
-        
+    func checkAnswer() {       
         for btn in btnArray {
             btn.enabled = false
         }
@@ -93,6 +91,7 @@ class TaskDetailViewController: UIViewController {
             }
         }
         task?.selectedAnswer = task!.answers[self.selectedAnswer!].id
+        task?.completed = true
         delegate?.getScoreFromDetail(score!)
     }
     

@@ -8,19 +8,20 @@ class Task: NSObject, NSCoding {
     var completed: Bool {
         didSet {
             var defaults = NSUserDefaults.standardUserDefaults()
-            var answeredQuestions: [Int]? = defaults.objectForKey("answeredQuestions") as [Int]?
-            if(answeredQuestions != nil) {
-                for actualId in answeredQuestions! {
-                    if(actualId == self.id) {
+            var completedTasks = defaults.objectForKey("completedTasks") as Dictionary<String,Int>!
+            if(completedTasks != nil) {
+                for actualId in completedTasks!.keys {
+                    if (actualId.toInt() == self.id) {
                         return
+                        
                     }
                 }
-                answeredQuestions!.append(self.id)
+                completedTasks[String(self.id)] = selectedAnswer
             } else {
-                answeredQuestions = [self.id]
+                completedTasks = Dictionary<String, Int>()
+                completedTasks[String(self.id)] = selectedAnswer
             }
-
-            defaults.setObject(answeredQuestions, forKey: "answeredQuestions")
+            defaults.setObject(completedTasks, forKey: "completedTasks")
         }
     }
     var id: Int

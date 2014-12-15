@@ -54,12 +54,13 @@ class DataPool : NSObject, NSCoding {
         locationArray = locations.values.array
         highscoreArray = highscores.values.array
         
-        var answeredQuestions: [Int]? = NSUserDefaults.standardUserDefaults().objectForKey("answeredQuestions") as [Int]?
-        if(answeredQuestions != nil) {
+        var completedTasks = NSUserDefaults.standardUserDefaults().objectForKey("completedTasks") as Dictionary<String,Int>!
+        if(completedTasks != nil) {
             for task in taskArray {
-                for actualId in answeredQuestions! {
-                    if(actualId == task.id) {
+                for actualId in completedTasks!.keys {
+                    if (actualId.toInt() == task.id) {
                         task.completed = true
+                        task.selectedAnswer = completedTasks[actualId]!
                     }
                 }
             }
@@ -203,6 +204,15 @@ class DataPool : NSObject, NSCoding {
             }
         }
         return beaconsArr
+    }
+    
+    func hasAnsweredQuestions() -> Bool {
+        for task in taskArray {
+            if task.completed == true {
+                return true
+            }
+        }
+        return false
     }
     
 }

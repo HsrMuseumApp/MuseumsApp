@@ -137,12 +137,14 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func checkIfQuestionsAnswered() {
         var defaults = NSUserDefaults.standardUserDefaults()
-        var answeredQuestions: [Int]? = defaults.objectForKey("answeredQuestions") as [Int]?
-        if(answeredQuestions != nil) {
+
+        var completedTasks = defaults.objectForKey("completedTasks") as Dictionary<String,Int>!
+        if(completedTasks != nil) {
             for task in tasks {
-                for actualId in answeredQuestions! {
-                    if(actualId == task.id) {
+                for actualId in completedTasks!.keys {
+                    if (actualId.toInt() == task.id) {
                         task.completed = true
+                        task.selectedAnswer = completedTasks[actualId]!
                     }
                 }
             }
@@ -158,7 +160,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         tableView.reloadData()
         var defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject([], forKey: "answeredQuestions")
+        defaults.setObject(Dictionary<String,Int>(), forKey: "completedTasks")
         defaults.setInteger(0, forKey: "score")
         score = 0
     }
