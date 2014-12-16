@@ -16,6 +16,10 @@ class TableViewCell: UITableViewCell {
     var task: Task? {
         didSet {
             label.text = task!.text
+            
+            println("Question: \(task!.text) - Beacon: \(task!.beacon.major) - \(task!.beacon.minor) - \(task!.beacon.id)")
+            
+            
             if(task!.completed) {
                 if(task!.isCorrect()) {
                     answerImageView.image = UIImage(named: "Tick.png");
