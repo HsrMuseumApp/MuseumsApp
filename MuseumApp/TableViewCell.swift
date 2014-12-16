@@ -15,7 +15,7 @@ class TableViewCell: UITableViewCell {
     var delegate: TableViewCellDelegate?
     var task: Task? {
         didSet {
-            label.text = task!.desc
+            label.text = task!.text
             if(task!.completed) {
                 if(task!.isCorrect()) {
                     answerImageView.image = UIImage(named: "Tick.png");
