@@ -20,7 +20,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="DRf-zu-nO3">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="608"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="FN3-rK-msQ">
+                            <tableView clipsSubviews="YES" alpha="0.94999999999999996" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="FN3-rK-msQ">
                                 <rect key="frame" x="16" y="0.0" width="568" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HSD-kS-lC8">
@@ -37,7 +37,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FN3-rK-msQ" secondAttribute="trailing" constant="20" id="GKA-kt-7l8"/>
-                            <constraint firstItem="FN3-rK-msQ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="NuT-3L-9gi"/>
+                            <constraint firstItem="FN3-rK-msQ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="65" id="NuT-3L-9gi"/>
                             <constraint firstItem="FN3-rK-msQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="a0j-WL-FFK"/>
                             <constraint firstAttribute="centerX" secondItem="FN3-rK-msQ" secondAttribute="centerX" id="bRH-8b-0ed"/>
                             <constraint firstItem="FN3-rK-msQ" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="dg4-aJ-9vB"/>

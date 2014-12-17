@@ -106,9 +106,8 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as TableViewCell
-        cell.backgroundColor = UIColor.clearColor()
         cell.selectionStyle = .None
-
+        cell.label.textColor = UIColor( red: CGFloat(16/255.0), green: CGFloat(38/255.0), blue: CGFloat(64/255.0), alpha: CGFloat(1.0) )
         let task = tasks[indexPath.row]
 
         cell.delegate = self
@@ -124,8 +123,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // Mark: - Table view delegate
     func colorForIndex(index: Int) -> UIColor {
-        return UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
-        
+        return UIColor( red: CGFloat(255/255.0), green: CGFloat(255/255.0), blue: CGFloat(255/255.0), alpha: CGFloat(1.0) )
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell,
