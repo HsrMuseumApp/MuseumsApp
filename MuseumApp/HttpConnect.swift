@@ -19,8 +19,9 @@ class HttpConnect {
         var response: NSURLResponse?
         var error: NSErrorPointer = nil
         var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: error)
-
+       
         return JSONParse(data!)
+        
     }
     
     func HTTPPost(urlString: String, parameters: String) -> AnyObject {

@@ -12,7 +12,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        let uuidString = "f7826da6-4fa2-4e98-8024-bc5b71e0893e"
+        let uuidStringAndreoli = "f7826da6-4fa2-4e98-8024-bc5b71e0893e"
+        let uuidStringRobin = "B9407F30-F5F8-466E-AFF9-25556B57FE6D"
+        
+        let uuidString = uuidStringRobin
         let beaconIdentifier = "iBeaconModules.us"
         let beaconUUID:NSUUID = NSUUID(UUIDString: uuidString)!
         let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID,
@@ -82,10 +85,14 @@ extension AppDelegate: CLLocationManagerDelegate {
             
             var tasks = tasksViewController.tasks
             
+            
+
+            
             for beacon in beacons {
+                var actualBeacon: CLBeacon = beacon as CLBeacon
                 for task in tasks {
-                    if( task.beacon.minor == beacon.minor && task.beacon.major == beacon.major) {
-                        if (beacon.proximity == CLProximity.Immediate || beacon.proximity == CLProximity.Near) {
+                    if( task.beacon.minor == actualBeacon.minor && task.beacon.major == actualBeacon.major) {
+                        if (actualBeacon.proximity == CLProximity.Immediate || actualBeacon.proximity == CLProximity.Near) {
                             task.isSelectable = true
                         } else {
                             task.isSelectable = false

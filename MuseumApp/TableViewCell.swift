@@ -17,7 +17,7 @@ class TableViewCell: UITableViewCell {
         didSet {
             label.text = task!.text
             
-            println("Question: \(task!.text) - Beacon: \(task!.beacon.major) - \(task!.beacon.minor) - \(task!.beacon.id)")
+            //println("S: \(task!.isSelectable) Question: \(task!.text) - Beacon: \(task!.beacon.major) - \(task!.beacon.minor) - \(task!.beacon.id)")
             
             
             if(task!.completed) {
