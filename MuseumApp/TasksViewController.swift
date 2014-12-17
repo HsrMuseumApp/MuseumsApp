@@ -107,7 +107,6 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as TableViewCell
         cell.selectionStyle = .None
-        cell.label.textColor = UIColor( red: CGFloat(16/255.0), green: CGFloat(38/255.0), blue: CGFloat(64/255.0), alpha: CGFloat(1.0) )
         let task = tasks[indexPath.row]
 
         cell.delegate = self

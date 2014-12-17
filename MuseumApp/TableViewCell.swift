@@ -47,12 +47,12 @@ class TableViewCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         label = UILabel(frame: CGRect.nullRect)
-        label.textColor = UIColor.whiteColor()
+        label.textColor = UIColor( red: CGFloat(16/255.0), green: CGFloat(38/255.0), blue: CGFloat(64/255.0), alpha: CGFloat(1.0) )
         label.font = UIFont.boldSystemFontOfSize(16)
         label.backgroundColor = UIColor.clearColor()
         
         subLabel = UILabel(frame: CGRect.nullRect)
-        subLabel.textColor = UIColor.whiteColor()
+        subLabel.textColor = UIColor( red: CGFloat(16/255.0), green: CGFloat(38/255.0), blue: CGFloat(64/255.0), alpha: CGFloat(1.0) )
         subLabel.font = UIFont.systemFontOfSize(12)
         subLabel.backgroundColor = UIColor.clearColor()
         
