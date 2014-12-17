@@ -35,6 +35,7 @@
 		A3EA66611A3876CA00998D08 /* highscoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3EA66601A3876CA00998D08 /* highscoreTableViewCell.xib */; };
 		A3EA66631A38772D00998D08 /* highscoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EA66621A38772D00998D08 /* highscoreTableViewCell.swift */; };
 		A3EAFDF51A39BCB100FBCA7D /* SubmitScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EAFDF41A39BCB100FBCA7D /* SubmitScoreViewController.swift */; };
+		C4A5D7441A41C8AD00387FD8 /* background1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C4A5D7431A41C8AD00387FD8 /* background1.jpg */; };
 		C4CE381D1A2EF0AB0029D07D /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CE381C1A2EF0AB0029D07D /* IntroViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		A3EA66601A3876CA00998D08 /* highscoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = highscoreTableViewCell.xib; sourceTree = "<group>"; };
 		A3EA66621A38772D00998D08 /* highscoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = highscoreTableViewCell.swift; sourceTree = "<group>"; };
 		A3EAFDF41A39BCB100FBCA7D /* SubmitScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitScoreViewController.swift; sourceTree = "<group>"; };
+		C4A5D7431A41C8AD00387FD8 /* background1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background1.jpg; sourceTree = "<group>"; };
 		C4CE381C1A2EF0AB0029D07D /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				846648EB1A3A296F00050F8A /* Help.JPG */,
+				C4A5D7431A41C8AD00387FD8 /* background1.jpg */,
 				846648E91A3A1CF000050F8A /* nm_sg.jpg */,
 				84E6DAC51A39BAC600509B04 /* Error.png */,
 				84E6DAC61A39BAC600509B04 /* Tick.png */,
@@ -311,6 +314,7 @@
 				84E6DAC71A39BAC600509B04 /* Error.png in Resources */,
 				846648EC1A3A296F00050F8A /* Help.JPG in Resources */,
 				84E6DAC81A39BAC600509B04 /* Tick.png in Resources */,
+				C4A5D7441A41C8AD00387FD8 /* background1.jpg in Resources */,
 				A35C13041A2895EF00AA8F36 /* LaunchScreen.xib in Resources */,
 				A3EA66611A3876CA00998D08 /* highscoreTableViewCell.xib in Resources */,
 				846648EA1A3A1CF000050F8A /* nm_sg.jpg in Resources */,

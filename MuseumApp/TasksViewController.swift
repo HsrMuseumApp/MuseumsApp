@@ -33,7 +33,6 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.separatorStyle = .None
         tableView.rowHeight = 50.0
-        tableView.backgroundColor = UIColor.blackColor()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveDataPool", name: "kSaveDataPoolNotification", object: nil);
 
