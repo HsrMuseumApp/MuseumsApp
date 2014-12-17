@@ -53,7 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1088.5333333333333" y="1132.2133333333334"/>
+            <point key="canvasLocation" x="1145" y="1129"/>
         </scene>
         <!--Submit Score View Controller-->
         <scene sceneID="dWB-HU-fKj">
@@ -384,6 +384,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wPP-BY-jIz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.94509803920000002" green="0.80392156859999997" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.062745098040000002" green="0.14901960780000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.72786458330000003" green="0.3365075616" blue="0.49134317230000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -403,4 +408,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="D0C-Xp-zJR"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.20392156862745098" green="0.36470588235294116" blue="0.51372549019607838" alpha="1" colorSpace="calibratedRGB"/>
 </document>
