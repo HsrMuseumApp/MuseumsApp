@@ -16,8 +16,8 @@ class TableViewCell: UITableViewCell {
     var delegate: TableViewCellDelegate?
     var task: Task? {
         didSet {
-            label.text = task!.item.name
-            subLabel.text = task!.text
+            label.text = task!.desc
+            subLabel.text = task!.item.name
             
             //println("S: \(task!.isSelectable) Question: \(task!.text) - Beacon: \(task!.beacon.major) - \(task!.beacon.minor) - \(task!.beacon.id)")
             
@@ -116,8 +116,8 @@ class TableViewCell: UITableViewCell {
                 }
             } else {
                 var alert: UIAlertView = UIAlertView()
-                alert.title = "Zu weit weg"
-                alert.message = "Bitte begeben Sie sich zuerst in die Nähe dieses Gegenstandes."
+                alert.title = "Zu weit entfernt"
+                alert.message = "Bitte begeben Sie sich zuerst in die Nähe des Gegenstandes \"" + task!.item.name + "\""
                 alert.addButtonWithTitle("Ok")
                 alert.show()
             }
