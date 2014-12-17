@@ -28,9 +28,10 @@ class Task: NSObject, NSCoding {
     var beacon: Beacon
     var answers: [Answer]
     var isSelectable: Bool
+    var item: Item
     
     
-    init(text: String, id: Int, desc: String, beacon: Beacon, answers: [Answer]) {
+    init(text: String, id: Int, desc: String, beacon: Beacon, answers: [Answer], item: Item) {
         self.text = text
         self.desc = desc
         self.completed = false
@@ -39,6 +40,7 @@ class Task: NSObject, NSCoding {
         self.answers = answers
         self.isSelectable = false
         self.selectedAnswer = 0
+        self.item = item
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -50,6 +52,7 @@ class Task: NSObject, NSCoding {
         aCoder.encodeObject(beacon, forKey: "beacon")
         aCoder.encodeObject(answers, forKey: "answers")
         aCoder.encodeObject(selectedAnswer, forKey: "selectedAnswer")
+        aCoder.encodeObject(item, forKey: "item")
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -61,6 +64,7 @@ class Task: NSObject, NSCoding {
         self.isSelectable = aDecoder.decodeBoolForKey("isSelectable")
         self.beacon = aDecoder.decodeObjectForKey("beacon") as Beacon
         self.answers = aDecoder.decodeObjectForKey("answers") as [Answer]
+        self.item = aDecoder.decodeObjectForKey("item") as Item
     }
     
     func isCorrect() -> Bool {

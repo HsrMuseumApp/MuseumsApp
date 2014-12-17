@@ -82,7 +82,7 @@ class TaskDetailViewController: UIViewController {
         
         if(task!.answers[self.selectedAnswer!].correct) {
             setAnswerCorrect()
-            score!++
+            score = score! + 3
             
         } else {
             setAnswerIncorrect()

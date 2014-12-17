@@ -10,12 +10,14 @@ class TableViewCell: UITableViewCell {
 
     var originalCenter = CGPoint()
     let label : UILabel
+    let subLabel : UILabel
     var answerImageView : UIImageView = UIImageView()
     let taskSelectableLayer = CALayer()
     var delegate: TableViewCellDelegate?
     var task: Task? {
         didSet {
-            label.text = task!.text
+            label.text = task!.item.name
+            subLabel.text = task!.text
             
             //println("S: \(task!.isSelectable) Question: \(task!.text) - Beacon: \(task!.beacon.major) - \(task!.beacon.minor) - \(task!.beacon.id)")
             
@@ -49,6 +51,11 @@ class TableViewCell: UITableViewCell {
         label.font = UIFont.boldSystemFontOfSize(16)
         label.backgroundColor = UIColor.clearColor()
         
+        subLabel = UILabel(frame: CGRect.nullRect)
+        subLabel.textColor = UIColor.whiteColor()
+        subLabel.font = UIFont.systemFontOfSize(12)
+        subLabel.backgroundColor = UIColor.clearColor()
+        
         // utility method for creating the contextual cues
         func createCueLabel() -> UILabel {
             let label = UILabel(frame: CGRect.nullRect)
@@ -58,12 +65,12 @@ class TableViewCell: UITableViewCell {
             return label
         }
         
-        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+
         answerImageView = UIImageView(frame: CGRectMake(CGRectGetWidth(bounds)-40, 10, 30, 30));
     
         addSubview(label)
+        addSubview(subLabel)
         addSubview(answerImageView)
         
         selectionStyle = .None
@@ -96,17 +103,24 @@ class TableViewCell: UITableViewCell {
         super.layoutSubviews()
         gradientLayer.frame = bounds
         taskSelectableLayer.frame = bounds
-        label.frame = CGRect(x: kLabelLeftMargin, y: 0, width: bounds.size.width - kLabelLeftMargin, height: bounds.size.height)
+        label.frame = CGRect(x: kLabelLeftMargin, y: 0, width: bounds.size.width - kLabelLeftMargin, height: bounds.size.height/2)
+        subLabel.frame = CGRect(x: kLabelLeftMargin, y: bounds.size.height/2, width: bounds.size.width - kLabelLeftMargin, height: bounds.size.height/2)
     }
     
  
     func handleTap() {
         if task != nil {
-            //if(task!.isSelectable) { //TODO Enterfernen für BEACONS
+            if(task!.isSelectable || task!.completed) {
                 if(task!.answers.count > 0) {
                     delegate!.taskAnswerQuestions(task!)
                 }
-            //}
+            } else {
+                var alert: UIAlertView = UIAlertView()
+                alert.title = "Zu weit weg"
+                alert.message = "Bitte begeben Sie sich zuerst in die Nähe dieses Gegenstandes."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+            }
         }
     }
 }

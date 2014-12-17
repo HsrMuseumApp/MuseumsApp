@@ -46,6 +46,7 @@ class DataPool : NSObject, NSCoding {
     }
     
     func initializeDataPool() {
+        getAllItems()
         getAllBeacons()
         getAllQuestions()
         getAllLocations()
@@ -77,6 +78,22 @@ class DataPool : NSObject, NSCoding {
         self.taskArray = dataPool.taskArray
     }
     
+    func getAllItems() {
+        var jsonObject: AnyObject = HttpConnect().HTTPGet(DB_SERVER + ITEMS)
+        
+        if let itemsArray = jsonObject as? NSArray{
+            for var i = 0; i < itemsArray.count; ++i {
+                if let jsonItem = itemsArray[i] as? NSDictionary{
+                    let id = jsonItem["id"] as Int
+                    let name = jsonItem["name"] as String
+                    
+                    var item = Item(id: id, name: name)
+                    items[id] = item
+                }
+            }
+        }
+    }
+    
     func getAllQuestions() {
         var jsonObject: AnyObject = HttpConnect().HTTPGet(DB_SERVER + QUESTIONS)
         
@@ -89,7 +106,8 @@ class DataPool : NSObject, NSCoding {
                     let itemId = jsonQuestion["itemId"] as? Int
                     var answers: [Answer] = getAnswerFromQuestion(id!)
                     var beacons: [Beacon] = getBeaconsByItemId(itemId!)
-                    var task = Task(text: text!, id: id!, desc: desc!, beacon: beacons[0], answers: answers)
+                    var item: Item = items[itemId!]!
+                    var task = Task(text: text!, id: id!, desc: desc!, beacon: beacons[0], answers: answers, item: item)
                     tasks[id!] = task
                 }
             }
@@ -205,7 +223,7 @@ class DataPool : NSObject, NSCoding {
         }
         return beaconsArr
     }
-    
+
     func hasAnsweredQuestions() -> Bool {
         for task in taskArray {
             if task.completed == true {

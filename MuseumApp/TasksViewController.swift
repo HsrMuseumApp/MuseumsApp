@@ -106,7 +106,7 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as TableViewCell
+        var cell :TableViewCell = TableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         cell.backgroundColor = UIColor.clearColor()
         cell.selectionStyle = .None
 
