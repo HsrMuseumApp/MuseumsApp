@@ -79,7 +79,7 @@ class TableViewCell: UITableViewCell {
         layer.insertSublayer(gradientLayer, atIndex: 0)
         
         taskSelectableLayer = CALayer(layer: layer)
-        taskSelectableLayer.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.6, alpha: 1.0).CGColor
+        taskSelectableLayer.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0).CGColor
         taskSelectableLayer.hidden = true
 
         layer.insertSublayer(taskSelectableLayer, atIndex: 0)
