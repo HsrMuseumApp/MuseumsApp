@@ -11,12 +11,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-        let uuidStringAndreoli = "f7826da6-4fa2-4e98-8024-bc5b71e0893e"
-        let uuidStringRobin = "B9407F30-F5F8-466E-AFF9-25556B57FE6D"
         
-        let uuidString = uuidStringRobin
-        let beaconIdentifier = "iBeaconModules.us"
+        let uuidString = NSBundle.mainBundle().objectForInfoDictionaryKey("beaconUuidString") as String
+        let beaconIdentifier = NSBundle.mainBundle().objectForInfoDictionaryKey("beaconIdentifier") as String
         let beaconUUID:NSUUID = NSUUID(UUIDString: uuidString)!
         let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID,
             identifier: beaconIdentifier)

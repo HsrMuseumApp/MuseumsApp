@@ -43,5 +43,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>beaconUuidString</key>
+	<string>B9407F30-F5F8-466E-AFF9-25556B57FE6D</string>
+	<key>beaconIdentifier</key>
+	<string>iBeaconModules.us</string>
+	<key>serverUrl</key>
+	<string>http://152.96.56.11/group5/json/</string>
 </dict>
 </plist>

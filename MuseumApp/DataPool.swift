@@ -2,7 +2,7 @@ import Foundation
 
 class DataPool : NSObject, NSCoding {
     
-    final var DB_SERVER = "http://152.96.56.11/group5/json/"
+    final var DB_SERVER = NSBundle.mainBundle().objectForInfoDictionaryKey("serverUrl") as String
     final var QUESTIONS = "questions"
     final var BEACONS = "beacons"
     final var ITEMS = "items"
