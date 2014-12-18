@@ -1,0 +1,29 @@
+language: objective-c
+env:
+  global:
+  - APP_NAME="MuseumApp"
+  - 'DEVELOPER_NAME="iPhone Developer: Sebastian Hunkeler (6FF3AD7M82)"'
+  - PROFILE_NAME="MuseumApp_Ad_Hoc"
+  - DISTRIBUTION_LISTS="developers"
+  - secure: kLzszEtClfxvDMXrc0kdgklHURuQqmh0htp1+O+A+r597EpI687DzX0KuObYc+p/59AzjJxFHKp9SbC2MI3B/4k03Oji/w5d01kS4mBsNehczHduhrUw76l6GZhUkqMXmmBS4pBd02yH9BbYYBB1EcSwIoEfA9FTmlKkQS3upcs=
+  - secure: IGYbPd3yL+KYRaVuqN1LKUyezEaW1smLLeyf4qzXkShsixgSVa2c9C36nU5T6XpZL405D2z5tooLPGUzHg6XFMKgXJu0tq9MgKFv3Y+61l99/AmeYgITxg1ESVht9esZ1IkYynwpncl8N7lOT1DaZUpy0Qv8kKZ0lE554K+vINg=
+  - secure: RBwgpnWNb7ET7rIMf/F/fHsaGgelg0Ouj5z4/nionRwM+rWNyBMZtqwHSh9xwRf35zyiX+2QT+7D1PJw8cBcNenVYnjZd7aVYtjc/oppg5i1RMENY/DMze82zAgCrPip3aO2DRG03h8iCSPQc9mLjHDht6567SWCgT1duPcvgyM=
+  - secure: t09m0YsfoC3gs/FUjPNEi785PnaySfmwBE17mmzbEuFQS0rOdArCYs8dvco/D+OPWHuC8hQMe56pGmxCkiPVq4wAfZmxscYRyxDVRJ7QBPaCuTiOyu4R4swDJEIb+SLYyaSOiE/Uq8LbfYMh6sZenyqPiNzG8205+swJQecxNCE=
+before_script:
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/MuseumApp_Ad_Hoc.mobileprovision.enc
+  -d -a -out scripts/profile/MuseumApp_Ad_Hoc.mobileprovision
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a
+  -out scripts/certs/dist.cer
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a
+  -out scripts/certs/dist.p12
+- chmod +x scripts/add-key.sh
+- chmod +x scripts/remove-key.sh
+- chmod +x scripts/testflight.sh
+- "./scripts/add-key.sh"
+script:
+- xctool -workspace MuseumAppWS.xcworkspace -scheme MuseumApp -sdk iphoneos -configuration
+  Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
+after_success:
+- "./scripts/testflight.sh"
+after_script:
+- "./scripts/remove-key.sh"
