@@ -85,19 +85,20 @@ extension AppDelegate: CLLocationManagerDelegate {
             
 
             
-            for beacon in beacons {
-                var actualBeacon: CLBeacon = beacon as CLBeacon
-                for task in tasks {
+            for task in tasks {
+                var isSelectable:Bool = false
+                for beacon in beacons {
+                    var actualBeacon: CLBeacon = beacon as CLBeacon
+                    
                     if( task.beacon.minor == actualBeacon.minor && task.beacon.major == actualBeacon.major) {
                         if (actualBeacon.proximity == CLProximity.Immediate || actualBeacon.proximity == CLProximity.Near) {
                             task.isSelectable = true
-                        } else {
-                            task.isSelectable = false
+                            isSelectable = true
                         }
-                        
-                    } else {
-                        task.isSelectable = false
                     }
+                }
+                if (!isSelectable) {
+                    task.isSelectable = false
                 }
             }
             
