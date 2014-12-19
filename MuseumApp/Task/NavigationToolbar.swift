@@ -37,7 +37,7 @@ class NavigationToolbar : UIView {
         
         if (pool.highscores.count > 0) {
             var scoreButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
-            var winnerpodium = UIImage(named:"winner-podium.png")
+            var winnerpodium = UIImage(named:"winner-podium")
             
             scoreButton.layer.frame = CGRect (x: bounds-105, y: 2.0, width: 40.0, height: 40.0)
             scoreButton.setImage(winnerpodium, forState: UIControlState.Normal)

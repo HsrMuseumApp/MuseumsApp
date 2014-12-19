@@ -24,9 +24,9 @@ class TableViewCell: UITableViewCell {
             
             if(task!.completed) {
                 if(task!.isCorrect()) {
-                    answerImageView.image = UIImage(named: "Tick.png");
+                    answerImageView.image = UIImage(named: "Tick");
                 } else {
-                    answerImageView.image = UIImage(named: "Error.png");
+                    answerImageView.image = UIImage(named: "Error");
                 }
             } else {
                 answerImageView.image = nil
