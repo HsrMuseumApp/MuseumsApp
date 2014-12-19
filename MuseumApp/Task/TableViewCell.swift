@@ -21,14 +21,13 @@ class TableViewCell: UITableViewCell {
             
             //println("S: \(task!.isSelectable) Question: \(task!.text) - Beacon: \(task!.beacon.major) - \(task!.beacon.minor) - \(task!.beacon.id)")
             
-            
+            // println("Task: \(task!.desc) - IsCorrect: \(task!.isCorrect())")
             if(task!.completed) {
                 if(task!.isCorrect()) {
                     answerImageView.image = UIImage(named: "Tick");
                 } else {
                     answerImageView.image = UIImage(named: "Error");
-                }
-            } else {
+                }            } else {
                 answerImageView.image = nil
             }
             if(task!.isSelectable){
@@ -67,7 +66,7 @@ class TableViewCell: UITableViewCell {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        answerImageView = UIImageView(frame: CGRectMake(CGRectGetWidth(bounds)-40, 10, 30, 30));
+        answerImageView = UIImageView(frame: CGRectMake(CGRectGetWidth(bounds)-80, 10, 30, 30));
     
         addSubview(label)
         addSubview(subLabel)
