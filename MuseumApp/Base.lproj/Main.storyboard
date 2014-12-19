@@ -178,14 +178,14 @@
                                 <rect key="frame" x="142" y="265" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="nm_sg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qR0-4o-cKp">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="NM_sg" translatesAutoresizingMaskIntoConstraints="NO" id="qR0-4o-cKp">
                                 <rect key="frame" x="16" y="100" width="307" height="121"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Jaj-lT-JyW"/>
                                     <constraint firstAttribute="width" constant="220" id="mQ6-7f-aq7"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Help.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="ERg-JJ-1iV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Help" translatesAutoresizingMaskIntoConstraints="NO" id="ERg-JJ-1iV">
                                 <rect key="frame" x="92" y="423" width="339" height="107"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="PBd-zd-f4y"/>
@@ -405,8 +405,8 @@
     </scenes>
     <resources>
         <image name="Background1" width="640" height="1136"/>
-        <image name="Help.JPG" width="1229" height="363"/>
-        <image name="nm_sg.jpg" width="460" height="160"/>
+        <image name="Help" width="1229" height="363"/>
+        <image name="NM_sg" width="460" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="MPW-LI-opy"/>
